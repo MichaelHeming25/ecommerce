@@ -1,0 +1,320 @@
+.dash-clientes {
+    width: 90%;
+    background: white;
+    height: 100vh;
+    margin-top: -6rem;
+    border-radius: 0.2rem;
+    box-shadow: 0px 1px 10px rgba(150, 150, 150, 0.303);
+    padding: 0rem;
+}
+.container-dash {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.topo-dash {
+    height: 12rem;
+    width: 100%;
+    background: #3b0b66;
+}
+.header-dash {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.conteudo-dash {
+    padding-top: 20px;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    padding-left: 320px;
+    padding-right: 20px;
+    height: 100%;
+    background: #f7f7f7;
+}
+.menu-left {
+    display: flex;
+    left: 0;
+    background: white;
+    height: 100vh;
+    box-shadow: 0px 1px 10px rgba(150, 150, 150, 0.303);
+    width: 300px;
+    z-index: 100;
+    align-items: center;
+    flex-direction: column;
+}
+.body-dash {
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.logo-menu {
+    padding: 1.2rem;
+}
+.menu-left ul {
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu-left ul li {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-family: "montserrat";
+    border-top: 1px solid #efefef;
+}
+.menu-left ul li:last-child {
+    border-bottom: 1px solid #ebebeb;
+}
+.menu-left ul a {
+    text-decoration: none;
+}
+.menu-left ul a:hover {
+    text-decoration: none;
+}
+.conteudo-dash .body {
+    width: 100%;
+    background: white;
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+}
+.title-body {
+    padding: 2rem 0;
+    font-size: 2rem;
+    font-family: "montserrat";
+}
+.dados {
+    align-items: flex-end;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+.dados-endereco {
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+.group-inputs {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    font-family: "montserrat";
+    padding: 1rem 2rem;
+}
+.group-inputs-first {
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    font-family: "montserrat";
+    padding: 1rem 2rem;
+}
+.group-inputs input {
+    width: 100%;
+    border-radius: 0.2rem;
+    border: 1px solid rgb(210, 210, 210);
+    padding: 0.5rem;
+}
+.group-inputs-first input {
+    width: 100%;
+    border-radius: 0.2rem;
+    border: 1px solid rgb(210, 210, 210);
+    padding: 0.5rem;
+}
+.bloco-input {
+    width: 49%;
+}
+.bloco-input-first {
+    width: 44%;
+}
+.group-endereco {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 1rem 0;
+    flex-direction: column;
+    font-family: "montserrat";
+}
+.group-endereco input {
+    width: 95%;
+    border-radius: 0.2rem;
+    border: 1px solid rgb(210, 210, 210);
+    padding: 0.5rem;
+}
+.group-endereco label {
+    padding-left: 2rem;
+    width: 100%;
+}
+.avatar-img {
+    background-position: top center;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-image: url(../img/user.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.avatar {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.avatar-img span i {
+    opacity: 0;
+    background: #000000ad;
+    padding: 1rem;
+    color: white;
+    border-radius: 100%;
+    font-size: 1.5rem;
+}
+.filter2 {
+    opacity: 0.8;
+}
+.avatar-img a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.avatar-img button {
+    background: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+.avatar-img button:focus {
+    outline: 0;
+}
+.input-group input[type="file"] {
+    display: none;
+}
+.input-group label {
+    width: 100%;
+    background-color: transparent;
+    border-radius: 0.2rem;
+    color: #717171;
+    cursor: pointer;
+    border: 1px solid #b3b3b3;
+    padding: 0.5rem;
+    margin: 0;
+}
+.btn-cadastrar {
+    background: #3b0b66;
+    padding: 0.3rem 1rem;
+    border: none;
+    border-radius: 0.2rem;
+    color: #f3f3f3;
+    font-family: "montserrat";
+    font-weight: 600;
+}
+.group-avatar img {
+    margin: 1rem 0;
+}
+.obs {
+    font-family: "montserrat";
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    padding: 0.3rem 0;
+}
+.group-avatar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.group-avatar label {
+    margin: 0;
+}
+.dados button {
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.3rem;
+}
+.dados-endereco .cadastrar-endereco {
+    background: #3b0b66;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.3rem;
+}
+.dados button label {
+    margin: 0;
+    padding: 0.5rem;
+}
+.dados-endereco button label {
+    margin: 0;
+    padding: 0.5rem;
+}
+.endereco-geral {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    align-items: center;
+}
+.botoes button {
+    background: transparent;
+    border: none;
+}
+.title-body-endereco {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-family: "montserrat";
+    padding: 2rem 0;
+}
+.modal-header-confirm {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid #ebedf2;
+    align-items: center;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+}
+.fa-exclamation {
+    padding: 2rem 2.5rem;
+    font-size: 2rem;
+    color: #9e0e0e;
+    margin: 1rem 0 2rem;
+    border: 1px solid #9e0e0e;
+    border-radius: 100%;
+}
+.modal-body-confirm {
+    padding: 0.5rem;
+}

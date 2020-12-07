@@ -1,0 +1,315 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+nav {
+    background: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    transition: 0.2s linear;
+    height: 5rem;
+    box-shadow: 0px 1px 10px rgba(150, 150, 150, 0.303);
+}
+.carousel {
+    margin-top: 5rem;
+}
+.sticky {
+    background: white !important;
+    transition: 0.2s linear;
+}
+.sticky-font {
+    color: black !important;
+}
+.header {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.logo {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.categorias {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: space-evenly;
+    padding: 4rem 0 4rem 0;
+    flex-wrap: wrap;
+}
+.categorias .bloco-categorias span {
+    font-weight: 600;
+    color: darkgrey;
+    font-family: "montserrat";
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    transition: 0.2s ease-out;
+    margin: 2rem 4rem;
+}
+.categorias .bloco-categorias span:hover {
+    background: #fff;
+    transform: translateY(-5px);
+    color: black;
+    transition: 0.2s ease-out;
+}
+.categorias .bloco-categorias span i {
+    background: #f3f3f3;
+    margin-bottom: 1rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7rem;
+    width: 7rem;
+    font-size: 2rem;
+    color: black;
+}
+.bloco-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+.rs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+.rs span {
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.rs span i {
+    font-size: 1.5rem;
+    transition: 0.2s linear;
+}
+.rs span i:hover {
+    transform: translateY(-5px);
+    transition: 0.2s linear;
+}
+.search {
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+.header form {
+    height: 100%;
+    width: 40%;
+}
+.header form input {
+    margin-right: -2rem;
+    width: 100% !important;
+    height: 3rem;
+}
+.header form button {
+    background: transparent;
+    border: none;
+}
+.header form button:focus {
+    outline: 0;
+}
+.menu-login a i {
+    font-size: 2rem;
+}
+.menu-login {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.menu-login a {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    color: black;
+}
+.menu-login a:hover {
+    text-decoration: none;
+    color: rgb(89, 89, 89);
+}
+.informacoes-interno {
+    width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.ofertas {
+    display: flex;
+    padding: 4rem 0 4rem 0;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-direction: column;
+}
+.oferta-item {
+    height: 100%;
+    width: 20rem;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: 0px 1px 10px rgba(150, 150, 150, 0.303);
+    border-radius: 0.3rem;
+    margin: 1rem;
+    transition: 0.2s ease-out;
+}
+/* .oferta-item:hover {
+    transform: scale(1.1);
+    transition: 0.2s ease-out;
+} */
+.oferta-header {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    border-bottom: 1px solid #d4d4d4;
+}
+.oferta-header span {
+    position: absolute;
+}
+.eye {
+    color: white;
+    font-size: 4rem;
+    opacity: 0;
+}
+.bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.bg img {
+    height: 10rem;
+}
+.filter {
+    filter: grayscale(1);
+    transition: 0.2s linear;
+    transform: scale(1.1);
+}
+.opacity {
+    opacity: 1;
+}
+.oferta-body {
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+    flex-direction: column;
+    height: 100%;
+}
+.oferta-descricao {
+    font-size: 0.9rem;
+    font-family: "montserrat";
+    color: #797979;
+}
+.oferta-valor {
+    padding-top: 1rem;
+    color: black;
+    font-family: "montserrat";
+    font-weight: 600;
+}
+.ofertas-interno {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.ofertas-interno a:hover {
+    text-decoration: none;
+}
+.title-ofertas {
+    width: 100%;
+    font-weight: 600;
+    font-family: "montserrat";
+    padding-left: 6rem;
+    padding-bottom: 1rem;
+}
+.linha-vertical span {
+    margin-top: 0.2rem;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 70%,
+        rgba(136, 0, 205, 0.984) 70%
+    );
+    width: 100%;
+    height: 0.3rem;
+}
+.linha-vertical {
+    justify-content: center;
+    width: 11.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.ads {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin: 1rem 0;
+}
+.ads img {
+    box-shadow: 0px 1px 10px rgb(150 150 150 / 11%);
+}
+footer {
+    margin-top: 6rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20rem;
+    bottom: 0;
+}
+footer .footer-interno {
+    display: flex;
+    align-items: center;
+    color: white;
+    background: rgb(42, 4, 57);
+    background: linear-gradient(
+        0deg,
+        rgba(42, 4, 57, 1) 40%,
+        rgba(42, 4, 57, 0.8071603641456583) 100%
+    );
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+.footer-bottom {
+    height: 4rem;
+    width: 100%;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgb(79, 79, 79);
+}
+.footer-bottom span {
+    color: white;
+    font-family: "montserrat";
+    font-weight: 600;
+}
