@@ -26,12 +26,13 @@ class SocialiteController extends Controller
 
         $user2 = Socialite::driver('facebook')->userFromToken($user->token);
 
-        $dados = ["avatar"=>$user->getAvatar(), "name"=>$user->getName(), "token"=>$user->token, "nick"=>$user->getNickname(), "email"=>$user->getEmail()];
+        $dados = ["avatar"=>$user->getAvatar(), "name"=>$user->getName(), "token"=>$user->token, "nick"=>$user->getNickname(), "email"=>$user->getEmail(), "tipo"=>"facebook"];
 
         session()->put('avatar', $dados['avatar']);
         session()->put('name', $dados['name']);
         session()->put('token', $dados['token']);
         session()->put('email', $dados['email']);
+        session()->put('tipo', "facebook");
 
         return redirect()->route('index');
     }

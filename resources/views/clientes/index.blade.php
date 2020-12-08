@@ -29,18 +29,25 @@
                         <div class="title-body">
                             MEUS DADOS
                         </div>
+                        <div class="linha-vertical" style="padding-bottom: 0;"><span></span></div>
                         <div class="dados">
                             <div class="group-inputs-first">
                                 <div class="avatar">
                                     {{-- <label for="avatar">EDITE AQUI SEU AVATAR</label> --}}
                                     @if ($data['avatar'] == null)
-                                    <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')">
+                                        <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')">
+                                    @elseif(session()->get('tipo') == "facebook")
+                                        <div class="avatar-img" style="background-image: url('{{ session()->get('avatar') }}')">
                                     @else
                                         <div class="avatar-img" style="background-image: url('data:image/{{$data['ext_img']}};base64,{{$data['avatar']}}')">
                                     @endif
+                                    
+                                    @if (!session()->has('id') == null)
                                         <button type="button" class="botao-editar btn-editar" data-id="{{ url('avatar/') }}/{{ session()->get('id') }}">
                                             <span><i class="far fa-edit"></i></span>
                                         </button>
+                                    @endif
+                                        
                                     </div>
                                 </div>
                                 <div class="bloco-input-first">
@@ -52,26 +59,38 @@
                                     <input type="text" name="email" value="{{ $data['email'] }}">
                                 </div>
                             </div>
-                            <div class="group-inputs">
-                                <div class="bloco-input">
-                                    <label for="telefone">TELEFONE:</label>
-                                    <input type="text" name="telefone" value="{{ $data['telefone'] }}">
+                            @if (isset($data['telefone']) && (isset($data['cpf'])))
+                                <div class="group-inputs">
+                                    @if (isset($data['telefone']))
+                                    <div class="bloco-input">
+                                            <label for="telefone">TELEFONE:</label>
+                                            <input type="text" name="telefone" value="{{ $data['telefone'] }}">
+                                        </div>  
+                                    @endif
+                                    @if (isset($data['cpf']))
+                                        <div class="bloco-input">
+                                            <label for="cpf">CPF:</label>
+                                            <input type="text" name="cpf" value="{{ $data['cpf'] }}">
+                                        </div>
+                                    @endif
                                 </div>
-                                <div class="bloco-input">
-                                    <label for="cpf">CPF:</label>
-                                    <input type="text" name="cpf" value="{{ $data['cpf'] }}">
+                            @endif
+                            @if (isset($data['usuario']) && isset($data['senha']))
+                                <div class="group-inputs">
+                                    @if (isset($data['usuario']))
+                                        <div class="bloco-input">
+                                            <label for="usuario">USUARIO:</label>
+                                            <input type="text" name="usuario" value="{{ $data['usuario'] }}">
+                                        </div>
+                                    @endif
+                                    @if (isset($data['senha']))
+                                        <div class="bloco-input">
+                                            <label for="senha">SENHA:</label>
+                                            <input type="text" name="senha" value="{{ $data['senha'] }}">
+                                        </div>
+                                    @endif
                                 </div>
-                            </div>
-                            <div class="group-inputs">
-                                <div class="bloco-input">
-                                    <label for="usuario">USUARIO:</label>
-                                    <input type="text" name="usuario" value="{{ $data['usuario'] }}">
-                                </div>
-                                <div class="bloco-input">
-                                    <label for="senha">SENHA:</label>
-                                    <input type="text" name="senha" value="{{ $data['senha'] }}">
-                                </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                  </div>
@@ -128,7 +147,26 @@
 				}
 			});
 			return false;
-		});
+        });
+        
+        $(document).ready(function(){
+            // $(window).scroll(function(){
+            //     if (this.scrollY > 80) {
+            //         $("nav").addClass("sticky");
+            //         $(".categorias span").addClass("sticky-font");
+            //     } else {
+            //         $("nav").removeClass("sticky");
+            //         $(".categorias span").removeClass("sticky-font");
+            //     }
+            // });
+
+            $('.menu-left button').click(function (){
+                $(this).toggleClass("active")
+                $(".lado-direito").toggleClass("active")
+            });
+
+        });
+
     </script>
 </body>
 </html>

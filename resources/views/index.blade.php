@@ -9,8 +9,8 @@
     {{-- LINKS CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('glide/dist/css/glide.core.css') }}">
-    <link rel="stylesheet" href="{{ asset('glide/dist/css/glide.theme.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('glide/dist/css/glide.core.css') }}">
+    <link rel="stylesheet" href="{{ asset('glide/dist/css/glide.theme.css') }}"> --}}
     {{-- ICONS --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     {{-- FONTS --}}
@@ -40,17 +40,26 @@
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
                 <button class="my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
             </form>
-            {{-- @if (isset($token))
-                {{$email}}
-            @else --}}
-
-            @if (session()->has('name'))
-            <div class="profile">
-               </span>Seja bem vindo, <span>{{ session()->get('name') }}</span>
-                <a href="{{ route('page.clientes') }}">
-                    <i class="far fa-address-card"></i>
-                </a>
-            </div>
+     
+            @if (session()->get('name'))
+                <div class="profile">
+                    <span style="padding-right: 0.3rem;">
+                        SEJA BEM VINDO,</span>
+                    @if (session()->get('tipo') == 'login')
+                        {{ strtoupper(session()->get('usuario')) }}
+                    @else
+                        {{ strtoupper(session()->get('name')) }}
+                    @endif
+                    <a href="{{ route('page.clientes') }}">
+                        @if ($data['avatar'] == null)
+                            <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')"></div>
+                        @elseif(session()->get('tipo') == "facebook")
+                            <div class="avatar-img" style="background-image: url('{{ session()->get('avatar') }}')"></div>
+                        @else
+                            <div class="avatar-img" style="background-image: url('data:image/{{$data['ext_img']}};base64,{{$data['avatar']}}')"></div>
+                        @endif
+                    </a>
+                </div>
             @else
                 <div class="menu-login">
                     <a href="{{ route('index.login') }}">
@@ -506,7 +515,7 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('css/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
-    <script src="{{ asset('glide/dist/glide.js') }}"></script>
+    {{-- <script src="{{ asset('glide/dist/glide.js') }}"></script> --}}
     <script>
         
         $(".oferta-header").mouseover(function(){
@@ -520,27 +529,27 @@
             $(this).find(".bg").removeClass('filter');
         });
         
-         new Glide(".carrosel-noticiasm", {
-            type: "carousel",
-            perView: 5,
-            focusAt: "center",
-            gap: 40,
+        //  new Glide(".carrosel-noticiasm", {
+        //     type: "carousel",
+        //     perView: 5,
+        //     focusAt: "center",
+        //     gap: 40,
 
-            breakpoints: {
-                1366: {
-                    perView: 5
-                },
-                1200: {
-                    perView: 3
-                },
-                800: {
-                    perView: 3
-                },
-                500: {
-                    perView: 3
-                }
-            }
-        }).mount();
+        //     breakpoints: {
+        //         1366: {
+        //             perView: 5
+        //         },
+        //         1200: {
+        //             perView: 3
+        //         },
+        //         800: {
+        //             perView: 3
+        //         },
+        //         500: {
+        //             perView: 3
+        //         }
+        //     }
+        // }).mount();
 
         $(document).ready(function(){
             $(window).scroll(function(){

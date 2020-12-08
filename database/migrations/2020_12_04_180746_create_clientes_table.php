@@ -21,9 +21,9 @@ class CreateClientesTable extends Migration
             $table->string('cpf');
             $table->string('password');
             $table->string('usuario');
-            $table->string('avatar');
-            $table->string('name_img');
-            $table->string('ext_img');
+            $table->longText('avatar')->nullable();
+            $table->string('name_img')->nullable();
+            $table->string('ext_img')->nullable();
             $table->timestamps();
         });
     }

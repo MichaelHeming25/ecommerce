@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/clientes.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ asset('dropdown/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     {{-- ICONS --}}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     {{-- FONTS --}}
@@ -28,10 +28,13 @@
                     <div class="body">
                         <div class="endereco-geral">
                          <div class="title-body-endereco">
-                            MEUS ENDEREÇOS
+                             <span>
+                                MEUS ENDEREÇOS
+                                <div class="linha-vertical" style="padding-bottom: 0;"><span></span></div>
+                             </span>
                              <div class="dados-endereco">
-                                <button type="button" class="cadastrar-endereco btn-editar" data-id="{{ url('avatar/') }}/{{ session()->get('id') }}">
-                                    <label for="">Adicionar endereço</label>
+                                <button type="button" class="cadastrar-endereco btn-editar" data-id="{{ url('page/clientes/endereco/cadastrar') }}">
+                                    <label>Adicionar endereço</label>
                                     <span><i class="fas fa-plus"></i></span>
                                 </button>
                             </div>
@@ -58,8 +61,8 @@
 
                                         <td>
                                             <div class="botoes">
-                                                <button type="button" class="botao-editar btn-editar" style="margin-right: 10px;" data-id="{{ url('admin/usuarios/editar') }}/{{ $data['id'] }}"><span class="entypo-tools"><i class="fas fa-edit"></i></span></button>
-                                                <button type="button" class="botao-remover" data-id="{{ url('admin/usuarios/confirm') }}/{{ $data['id'] }}"><i class="far fa-trash-alt"></i></button>  
+                                                {{-- <button type="button" class="botao-editar btn-editar" style="margin-right: 10px;" data-id="{{ url('admin/usuarios/editar') }}/{{ $data['id'] }}"><span class="entypo-tools"><i class="fas fa-edit"></i></span></button>
+                                                <button type="button" class="botao-remover" data-id="{{ url('admin/usuarios/confirm') }}/{{ $data['id'] }}"><i class="far fa-trash-alt"></i></button>   --}}
                                             </div>
                                         </td>
                                     </tr>

@@ -22,18 +22,26 @@ class LoginController extends Controller
 
         $verific_email = DB::table('clientes')->where('email', $request['email'])->get();
 
-        foreach ($verific_email as $key => $login) {
-            if (decrypt($login->password) == $request['password']) {
-                
-                session()->put('id', $login->id);
-                session()->put('name', $login->name);
-                session()->put('email', $login->email);
+        if (isset($verific_email[0])) {
+                foreach ($verific_email as $key => $login) {
+                    if (decrypt($login->password) == $request['password']) {
+                        
+                        session()->put('id', $login->id);
+                        session()->put('name', $login->name);
+                        session()->put('email', $login->email);
+                        session()->put('usuario', $login->usuario);
+                        session()->put('tipo', "login");
 
-                return redirect()->route('index');
-            }else{
-                dd('senha incorreta');
+                        return redirect()->route('index');
+                    }else{
+                        return redirect()->route('index.login')->with('invalido', 'Senha incorreta!');
+                    }
+                }
+            } else{
+                return redirect()->route('index.login')->with('invalido', 'Esse email não existe!');
             }
-        }
+
+        
     }
 
     // VIEW DO REGISTER
@@ -61,7 +69,7 @@ class LoginController extends Controller
             $db->password = encrypt($request->input('password'));
             $db->save();
 
-            return redirect()->route('index.login')->with('mensagem', 'O usuário foi cadastrado com sucesso!');
+            return redirect()->route('index.login');
         }
     }
 

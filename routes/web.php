@@ -62,6 +62,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('page/clientes', [App\Http\Controllers\clientes\pageClientesController::class, 'index'])->name('page.clientes')->middleware('clientes');
 
-Route::get('page/clientes/endereco', [App\Http\Controllers\clientes\pageClientesController::class, 'endereco'])->name('clientes.endereco')->middleware('clientes');
+// ENDEREÇO
 
-Route::post('page/clientes/endereco/save', [App\Http\Controllers\clientes\pageClientesController::class, 'cadastrarSave'])->name('endereco.cadastrar')->middleware('clientes');
+Route::get('page/clientes/endereco', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'index'])->name('endereco.index')->middleware('clientes');
+
+Route::get('page/clientes/endereco/cadastrar', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'cadastrar'])->name('endereco.cadastrar')->middleware('clientes');

@@ -23,7 +23,7 @@
     padding-top: 2rem;
     justify-content: center;
     display: flex;
-    margin: -5rem;
+    margin: -7rem;
     padding: 4rem 0;
     height: auto;
     box-shadow: 0px 1px 10px rgba(150, 150, 150, 0.303);
@@ -36,7 +36,7 @@
     padding-top: 2rem;
     justify-content: center;
     display: flex;
-    margin: -5rem;
+    margin: -7rem;
     padding: 2rem 0;
     height: auto;
     box-shadow: 0px 1px 10px rgba(150, 150, 150, 0.303);
@@ -67,27 +67,40 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem 0;
 }
-.group {
+.conteudo-register {
+    width: 90%;
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+}
+/* .group {
     align-items: flex-start;
     flex-direction: column;
     display: flex;
     margin: 0.5rem 0;
-    width: 60%;
-}
+    width: 100%;
+} */
 .group-register {
     align-items: flex-start;
     flex-direction: column;
     display: flex;
     margin: 0.5rem 0;
-    width: 45%;
+    width: 48%;
+}
+.group-register .group {
+    width: 100%;
 }
 .group-endereco {
     align-items: flex-start;
     flex-direction: column;
     display: flex;
     margin: 0.5rem 0;
-    width: 93%;
+    width: 48%;
 }
 .group-avatar {
     align-items: flex-start;
@@ -104,12 +117,12 @@
     margin: 0;
     opacity: 0;
 } */
-.group label {
+/* .group label {
     margin-bottom: 0;
     margin-left: 0.3rem;
     font-family: "montserrat";
     color: black;
-}
+} */
 .group-register label {
     margin-bottom: 0;
     margin-left: 0.3rem;
@@ -118,7 +131,6 @@
 }
 .group-endereco label {
     margin-bottom: 0;
-    margin-left: 0.3rem;
     font-family: "montserrat";
     color: black;
 }
@@ -129,49 +141,61 @@
     color: black;
 }
 .group input {
-    border: 1px solid #9e9e9e;
-    border-radius: 0.2rem;
-    padding: 0.5rem;
+    border: 1px solid #cbcbcb;
+    padding-left: 0.5rem;
     width: 100%;
     font-family: "montserrat";
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    transition: all 0.1s linear;
 }
+/* .group input:focus {
+    outline: 0;
+} */
+/* .group input:hover {
+    border-bottom: 2px solid #ff0000;
+    transition: all 0.1s linear;
+} */
 .group-register input {
     border: 1px solid #9e9e9e;
-    border-radius: 0.2rem;
     padding: 0.5rem;
     width: 100%;
     font-family: "montserrat";
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 .group-avatar img {
     border-radius: 100%;
     width: 64px;
     height: 64px;
 }
-.group-endereco input {
+.group-endereco .input {
     border: 1px solid #9e9e9e;
     border-radius: 0.2rem;
-    padding: 0.5rem;
+    padding: 0.3rem 0.5rem;
     width: 100%;
     font-family: "montserrat";
 }
 .button button {
     border-radius: 0.3rem;
     background: #3b0b66;
-    width: 60%;
+    width: 80%;
     border: none;
     color: white;
-    margin-top: 0.5rem;
     font-family: "montserrat";
     padding: 0.5rem 0;
+    font-size: 1.2rem;
     transition: 0.2s linear;
 }
 .button-register button {
     border-radius: 0.3rem;
     background: #3b0b66;
-    width: 93%;
+    width: 100%;
     border: none;
     color: white;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     font-family: "montserrat";
     padding: 0.5rem 0;
     transition: 0.2s linear;
@@ -191,7 +215,7 @@
     display: flex;
 }
 .button-register {
-    width: 100%;
+    width: 90%;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -250,13 +274,13 @@
 .bloco1 {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 .bloco2 {
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 .bloco3 {
@@ -264,4 +288,147 @@
     display: flex;
     align-items: center;
     width: 100%;
+}
+.bloco4 {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.group {
+    position: relative;
+    width: 80%;
+    padding: 1rem 0;
+}
+input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid #757575;
+}
+input:focus {
+    outline: none;
+}
+
+/* LABEL ======================================= */
+.group label {
+    color: rgb(120, 120, 120);
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.group input:focus ~ label,
+.group input:valid ~ label {
+    top: -10px;
+    font-size: 1rem;
+    color: #612297;
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.bar:before,
+.bar:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #8733d1;
+    transition: 0.3s ease all;
+    -moz-transition: 0.3s ease all;
+    -webkit-transition: 0.3s ease all;
+}
+.bar:before {
+    left: 50%;
+}
+.bar:after {
+    right: 50%;
+}
+
+/* active state */
+.group input:focus ~ .bar:before,
+.group input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: #5264ae;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+@-moz-keyframes inputHighlighter {
+    from {
+        background: #5264ae;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+@keyframes inputHighlighter {
+    from {
+        background: #5264ae;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+/* RESOLUÇÕES */
+
+@media (max-width: 800px) {
+    .login form {
+        width: 90%;
+    }
+    .login-register form {
+        width: 90%;
+    }
+    .bloco1 {
+        flex-direction: column;
+    }
+    .group-register {
+        width: 100%;
+    }
+    .bloco2 {
+        flex-direction: column;
+    }
 }

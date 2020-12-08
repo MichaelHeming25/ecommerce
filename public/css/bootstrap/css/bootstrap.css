@@ -5369,15 +5369,16 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .alert-danger {
     color: #721c24;
-    width: 93%;
+    width: 80%;
     background-color: #ffc4c980;
-    margin-top: 0.5rem;
+    margin-top: 0rem;
     display: flex;
     opacity: 0.8;
     justify-content: space-between;
     align-items: center;
     padding: 0.3rem 0.5rem;
     border-color: #f5c6cb;
+    margin-bottom: 0rem;
 }
 .alert .alert-close i {
     opacity: 0.6;
@@ -6083,11 +6084,11 @@ a.close.disabled {
   justify-content: space-between;
 }
 
-.modal-body {
+.modal-body, .modal-body-cadastrar, .modal-body-remover, .modal-body-confirm {
   position: relative;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .modal-footer {

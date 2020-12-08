@@ -30,42 +30,61 @@
                 <img src="{{ asset('img/logo.png') }}">
                 <div class="title">CADASTRAR</div>
                 <div class="linha-vertical"><span></span></div>
-                <div class="conteudo-login">
+                <div class="conteudo-register">
                     <div class="bloco1">
                         <div class="group-register">
-                            <label for="name">Nome:</label>
-                            <input type="text" name="name" id="name" placeholder="Insira seu nome aqui...">
+                            <div class="group">      
+                                <input type="text" name="name" id="name" class="name" required autocomplete="off">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Nome</label>
+                            </div>
                         </div>
                         <div class="group-register">
-                            <label for="email">E-Mail:</label>
-                            <input type="email" name="email" id="email" class="email" placeholder="Insira o email aqui...">
+                            <div class="group">      
+                                <input type="email" name="email" id="email" class="email" required autocomplete="off">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>E-Mail</label>
+                            </div>
                         </div>
                     </div>
                     <div class="bloco2">
-                        <div class="group-register">
-                            <label for="telefone">Telefone:</label>
-                        <input type="text" name="telefone" id="telefone" class="telefone" placeholder="Insira seu telefone aqui...">
+                         <div class="group-register">
+                            <div class="group">      
+                                <input type="text" name="telefone" id="telefone" class="telefone" required autocomplete="off">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Telefone</label>
+                            </div>
                         </div>
-                        <div class="group-register">
-                            <label for="cpf">Cpf:</label>
-                        <input type="text" name="cpf" id="cpf" class="cpf" placeholder="Insira seu cpf aqui...">
+                         <div class="group-register">
+                            <div class="group">      
+                                <input type="text" name="cpf" id="cpf" class="cpf" required autocomplete="off">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Cpf</label>
+                            </div>
                         </div>
                     </div>
                      <div class="bloco2">
-                        <div class="group-register">
-                            <label for="usuario">Usuario:</label>
-                            <input type="text" name="usuario" id="usuario" class="usuario" placeholder="Insira seu usuário aqui...">
+                         <div class="group-register">
+                            <div class="group">      
+                                <input type="text" name="usuario" id="usuario" class="usuario" required autocomplete="off">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Usuário</label>
+                            </div>
                         </div>
-                        <div class="group-register">
-                            <label for="password">Senha:</label>
-                        <input type="password" name="password" id="password" class="password" placeholder="Insira seu usuário aqui...">
+                         <div class="group-register">
+                            <div class="group">      
+                                <input type="password" name="password" id="password" class="password" required autocomplete="off">
+                                <span class="highlight"></span>
+                                <span class="bar"></span>
+                                <label>Senha</label>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="button-register">
-                        <button type="submit">CADASTRAR</button>
-                    </div>
-                    
 
                     @if (session('mensagem'))
                         <div class="sacefull">
@@ -96,6 +115,11 @@
                     @endif
 
                 </div>
+
+                <div class="button-register">
+                    <button type="submit">CADASTRAR</button>
+                </div>
+                 
                 <div class="info-login">
                     <div class="title-info">
                         Ja é cadastrado ?

@@ -33,20 +33,57 @@
                     <span style="padding-top: 3rem;font-size:2rem;font-family:'montserrat';color:#b3b3b3;">Usuário já logado</span>
                 @else
                 <div class="title">LOGIN</div>
-                <div class="linha-vertical"><span></span></div>
+                <div class="linha-vertical" style="padding-bottom: 0;"><span></span></div>
                 <div class="conteudo-login">
-                    <div class="group">
-                        <label for="email">E-Mail:</label>
-                       <input type="email" name="email" id="email" class="email" placeholder="Insira seu email aqui...">
+                  
+                    <div class="group">      
+                        <input type="text" name="email" id="email" class="email" required autocomplete="off">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>E-Mail</label>
                     </div>
-                    <div class="group">
-                        <label for="password">Senha:</label>
-                       <input type="password" name="password" id="password" class="password" placeholder="Insira seu usuário aqui...">
+                    
+                    <div class="group">      
+                        <input type="password" name="password" id="password" class="password" required autocomplete="off">
+                        <span class="highlight"></span>
+                        <span class="bar"></span>
+                        <label>Senha</label>
                     </div>
-                    <div class="button">
-                        <button type="submit">Entrar</button>
-                    </div>
+
+                    @if (session('mensagem'))
+                        <div class="sacefull">
+                            <div class="alert alert-success">
+                                <span>
+                                    <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
+                                    {{ session('mensagem') }}
+                                </span>
+                                <div class="alert-close">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @elseif(session('invalido'))
+                        <div class="alert alert-danger">
+                            <span>
+                                <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
+                                {{ session('invalido') }}
+                            </span>
+                            <div class="alert-close">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    @endif
+
                 </div>
+
+                <div class="button">
+                    <button type="submit">Entrar</button>
+                </div>
+
                 <div class="info-login">
                     <div class="title-info">
                         Não é cadastrado ?

@@ -2,6 +2,52 @@ body {
     margin: 0;
     padding: 0;
 }
+/* Style The Dropdown Button */
+.dropbtn {
+    background-color: transparent;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+}
+
 nav {
     background: white;
     width: 100%;
@@ -249,7 +295,6 @@ nav {
     padding-bottom: 1rem;
 }
 .linha-vertical span {
-    margin-top: 0.2rem;
     background: rgb(0, 0, 0);
     background: linear-gradient(
         90deg,
@@ -262,7 +307,6 @@ nav {
 .linha-vertical {
     justify-content: center;
     width: 11.5rem;
-    height: 100%;
     display: flex;
     align-items: center;
 }
@@ -312,4 +356,22 @@ footer .footer-interno {
     color: white;
     font-family: "montserrat";
     font-weight: 600;
+}
+.avatar-img {
+    background-position: top center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    background-image: url(../img/user.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+}
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -16,8 +16,10 @@ class clientes
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!session()->has('id')) {
-            return redirect()->route('index');
+        if (!session()->has('token')) {
+            if (!session()->has('id')) {
+                return redirect()->route('index');
+            }
         }
 
         return $next($request);
