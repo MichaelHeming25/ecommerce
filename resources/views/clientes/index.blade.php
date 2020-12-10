@@ -52,11 +52,11 @@
                                 </div>
                                 <div class="bloco-input-first">
                                     <label for="name">NOME:</label>
-                                    <input type="text" name="name" value="{{ $data['name'] }}">
+                                    <input type="text" name="name" value="{{ $data['name'] }}" disabled>
                                 </div>
                                 <div class="bloco-input-first">
                                     <label for="email">E-MAIL:</label>
-                                    <input type="text" name="email" value="{{ $data['email'] }}">
+                                    <input type="text" name="email" value="{{ $data['email'] }}" disabled>
                                 </div>
                             </div>
                             @if (isset($data['telefone']) && (isset($data['cpf'])))
@@ -64,13 +64,13 @@
                                     @if (isset($data['telefone']))
                                     <div class="bloco-input">
                                             <label for="telefone">TELEFONE:</label>
-                                            <input type="text" name="telefone" value="{{ $data['telefone'] }}">
+                                            <input type="text" name="telefone" value="{{ $data['telefone'] }}" disabled>
                                         </div>  
                                     @endif
                                     @if (isset($data['cpf']))
                                         <div class="bloco-input">
                                             <label for="cpf">CPF:</label>
-                                            <input type="text" name="cpf" value="{{ $data['cpf'] }}">
+                                            <input type="text" name="cpf" value="{{ $data['cpf'] }}" disabled>
                                         </div>
                                     @endif
                                 </div>
@@ -80,13 +80,13 @@
                                     @if (isset($data['usuario']))
                                         <div class="bloco-input">
                                             <label for="usuario">USUARIO:</label>
-                                            <input type="text" name="usuario" value="{{ $data['usuario'] }}">
+                                            <input type="text" name="usuario" value="{{ $data['usuario'] }}" disabled>
                                         </div>
                                     @endif
                                     @if (isset($data['senha']))
                                         <div class="bloco-input">
                                             <label for="senha">SENHA:</label>
-                                            <input type="text" name="senha" value="{{ $data['senha'] }}">
+                                            <input type="text" name="senha" value="{{ $data['senha'] }}" disabled>
                                         </div>
                                     @endif
                                 </div>
@@ -97,18 +97,11 @@
             </div>
         </div>
     </div>
-    
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('css/bootstrap/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/popper.js') }}"></script>
-    <script src="{{ asset('dropdown/js/custom.js') }}"></script>
-
     <script>
          $(".menu-left ul li").mouseover(function(){
             $(this).css('background', '#5b2d83');
             $(this).css('color', 'white');
             $(this).css('transition', '0.1s linear');
-            
         });
         $(".menu-left ul li").mouseout(function(){
             $(this).css('background', 'white');
@@ -148,25 +141,6 @@
 			});
 			return false;
         });
-        
-        $(document).ready(function(){
-            // $(window).scroll(function(){
-            //     if (this.scrollY > 80) {
-            //         $("nav").addClass("sticky");
-            //         $(".categorias span").addClass("sticky-font");
-            //     } else {
-            //         $("nav").removeClass("sticky");
-            //         $(".categorias span").removeClass("sticky-font");
-            //     }
-            // });
-
-            $('.menu-left button').click(function (){
-                $(this).toggleClass("active")
-                $(".lado-direito").toggleClass("active")
-            });
-
-        });
-
     </script>
 </body>
 </html>

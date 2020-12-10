@@ -27,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (session()->get('id')) {
+        if (session()->get('tipo') == 'login') {
             $clientes = clientes::all();
 
             foreach ($clientes as $key => $cliente) {

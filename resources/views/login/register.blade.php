@@ -146,36 +146,28 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('css/bootstrap/js/bootstrap.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
+    <script src="{{ asset('mask/dist/jquery.mask.js')}}"></script>
     <script>
         
-        var configuracoes = {}
-
-        $("#avatar").base64({
-            "onSuccess": function(inst, base64Str) {
-                console.log(base64Str)
-                configuracoes['base64'] = base64Str;
-                console.log(configuracoes)
-            }
-        });
-
-        function preview(){
-            console.log(configuracoes);
-
-            var imagem = document.querySelector('input[name=avatar]').files[0];
-            var preview = document.querySelector('img[name=avatar]');
-
-            var reader = new FileReader();
-
-            reader.onloadend = function () {
-                preview.src = reader.result;
-            }
-
-            if(imagem){
-                reader.readAsDataURL(imagem);
-            }else{
-                preview.src = "";
-            }
-        }
+    var options_cpf = {
+		onKeyPress: function (cpf, ev, el, op) {
+			var masks = ['000.000.000-00'],
+				mask = (cpf.length > 14) ? masks[1] : masks[0];
+			el.mask(mask, op);
+		}
+	};
+	
+	$('#cpf').mask('000.000.000-00', options_cpf);
+        
+    var options_telefone = {
+		onKeyPress: function (cpf, ev, el, op) {
+			var masks = ['(00)0.0000-0000'],
+				mask = (cpf.length > 15) ? masks[1] : masks[0];
+			el.mask(mask, op);
+		}
+	};
+	
+	$('#telefone').mask('(00)0.0000-0000', options_telefone);
 
     </script>
 </body>

@@ -23,25 +23,23 @@ class LoginController extends Controller
         $verific_email = DB::table('clientes')->where('email', $request['email'])->get();
 
         if (isset($verific_email[0])) {
-                foreach ($verific_email as $key => $login) {
-                    if (decrypt($login->password) == $request['password']) {
-                        
-                        session()->put('id', $login->id);
-                        session()->put('name', $login->name);
-                        session()->put('email', $login->email);
-                        session()->put('usuario', $login->usuario);
-                        session()->put('tipo', "login");
+            foreach ($verific_email as $key => $login) {
+                if (decrypt($login->password) == $request['password']) {
+                    
+                    session()->put('id', $login->id);
+                    session()->put('name', $login->name);
+                    session()->put('email', $login->email);
+                    session()->put('usuario', $login->usuario);
+                    session()->put('tipo', "login");
 
-                        return redirect()->route('index');
-                    }else{
-                        return redirect()->route('index.login')->with('invalido', 'Senha incorreta!');
-                    }
+                    return redirect()->route('index');
+                }else{
+                    return redirect()->route('index.login')->with('invalido', 'Senha incorreta!');
                 }
-            } else{
-                return redirect()->route('index.login')->with('invalido', 'Esse email não existe!');
             }
-
-        
+        } else{
+            return redirect()->route('index.login')->with('invalido', 'Essa conta não existe!');
+        }
     }
 
     // VIEW DO REGISTER
@@ -112,5 +110,11 @@ class LoginController extends Controller
 
          $db->save();
         return redirect()->route('page.clientes')->with('mensagem', 'Avatar atualizado com sucesso!');
+    }
+    public function logout(Request $request) {
+
+        $request->session()->forget(['name', 'usuario', 'tipo', 'email', 'id']);
+        
+        return redirect()->route('index.login');
     }
 }

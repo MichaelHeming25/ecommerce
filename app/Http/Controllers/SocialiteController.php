@@ -24,15 +24,13 @@ class SocialiteController extends Controller
     {
         $user = Socialite::driver('facebook')->user();
 
-        $user2 = Socialite::driver('facebook')->userFromToken($user->token);
-
-        $dados = ["avatar"=>$user->getAvatar(), "name"=>$user->getName(), "token"=>$user->token, "nick"=>$user->getNickname(), "email"=>$user->getEmail(), "tipo"=>"facebook"];
+        $dados = ["avatar"=>$user->getAvatar(), "name"=>$user->getName(), "id"=>$user['id'], "email"=>$user->getEmail(), "tipo"=>"facebook"];
 
         session()->put('avatar', $dados['avatar']);
         session()->put('name', $dados['name']);
-        session()->put('token', $dados['token']);
+        session()->put('id', $dados['id']);
         session()->put('email', $dados['email']);
-        session()->put('tipo', "facebook");
+        session()->put('tipo', $dados['tipo']);
 
         return redirect()->route('index');
     }
@@ -47,8 +45,6 @@ class SocialiteController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->user();
-
-        $user2 = Socialite::driver('google')->userFromToken($user->token);
 
         $dados = ["avatar"=>$user->getAvatar(), "name"=>$user->getName(), "nick"=>$user->getNickname(), "email"=>$user->getEmail()];
 

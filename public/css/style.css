@@ -47,7 +47,45 @@ body {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
 }
+.modal-dropdown {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-dropdown:focus {
+    outline: 0;
+}
+.modal-body-dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    flex-direction: column;
+}
 
+.modal-body-dropdown a {
+    display: flex;
+    color: black;
+    width: 100%;
+    border-bottom: 1px solid black;
+    text-align: center;
+    padding: 0.5rem 1.5rem;
+    align-items: center;
+}
+.modal-body-dropdown a:hover {
+    background: #3b0b66;
+    text-decoration: none;
+    color: white;
+}
+.modal-body-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.modal-body-dropdown a i {
+    padding-right: 0.5rem;
+}
 nav {
     background: white;
     width: 100%;
@@ -188,6 +226,9 @@ nav {
     align-items: center;
     color: black;
 }
+/* .menu-login a {
+    padding: 0 0.5rem;
+} */
 .menu-login a:hover {
     text-decoration: none;
     color: rgb(89, 89, 89);
@@ -359,8 +400,8 @@ footer .footer-interno {
 }
 .avatar-img {
     background-position: top center;
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 100%;
     background-image: url(../img/user.png);
     background-repeat: no-repeat;

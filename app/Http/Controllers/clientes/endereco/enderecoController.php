@@ -5,6 +5,7 @@ namespace App\Http\Controllers\clientes\endereco;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\endereco;
+use Illuminate\Support\Facades\DB;
 
 class enderecoController extends Controller
 {
@@ -14,10 +15,14 @@ class enderecoController extends Controller
     }
 
     public function index()
-    { 
+    {
         $this->middleware('clientes');
 
-        return view('clientes.endereco.endereco');
+        $endereco = endereco::where('id_cliente', session('id'))->get();
+        
+        return view('clientes.endereco.endereco', [
+            'endereco' => $endereco
+        ]);
     }
 
     public function cadastrar()
@@ -25,176 +30,80 @@ class enderecoController extends Controller
         return view('clientes.endereco.cadastrarEndereco');
     }
 
-    public function cadastrado(Request $request)
+    public function cadastrarSalvar(Request $request)
     {
+        $db = New endereco();
 
-        $db = New user();
+        $id = session()->get('id');
 
-        $teste = $request->file('avatar');
+        $db->id_cliente = $id;
+        $db->estado = $request->input('estado');
+        $db->cidade = $request->input('cidade');
+        $db->numero = $request->input('numero');
+        $db->endereco = $request->input('endereco');
+        $db->complemento = $request->input('complemento');
+        $db->bairro = $request->input('bairro');
+        $db->cep = $request->input('cep');
+        $db->save();
 
-        if( isset($teste)){
-
-            $name_file = $teste->getClientOriginalName();
-
-            $ext = pathinfo($name_file, PATHINFO_EXTENSION);
-
-            $item = base64_encode(file_get_contents($request->file('avatar')));
-
-            $db->ext = $ext;
-            $db->name_img = $name_file;
-            $db->avatar = $item;
-        };
-
-        $verific_email = DB::table('users')->where('email', $request['email'])->count() == 1;
-
-        if($verific_email == "true") {
-            return redirect()->route('admin.usuarios')->with('invalido', 'E-Mail já existente!');
-        } else{
-            $db->name = $request->input('name');
-            $db->email = $request->input('email');
-            $db->telefone = $request->input('telefone');
-            $db->password = bcrypt($request->input('password'));
-            $db->save();
-
-            return redirect()->route('admin.usuarios')->with('mensagem', 'O usuário foi cadastrado com sucesso!');
-        }
-
+        return redirect()->route('endereco.index')->with('mensagem', 'O endereço foi cadastrado com sucesso!');
     }
 
-    public function editarUsuario(Request $request, $id)
+    public function editar(Request $request, $id)
     {
-
-        $user = user::all();
-
+        // $user = user::all();
         // foreach ($user as $users) {
         //     if(Auth::user()->peditar_usuario == 0){
         //         return redirect()->route('admin')->with('mensagem', 'Você não tem permissão para acessar esta página!');
         //     }else{
-                $db = user::find($id);
-                return view('admin.usuarios.editarUsuarios',[
+                $db = endereco::find($id);
+                return view('clientes.endereco.editarEndereco',[
                     'id' => $id,
-                    'name' => $db['name'],
-                    'email' => $db['email'],
-                    'avatar' => $db['avatar'],
-                    'ext' => $db['ext'],
-                    'name_img' => $db['name_img'],
-                    'telefone' => $db['telefone'],
-                    'password' => $db['password'],
+                    'estado' => $db['estado'],
+                    'cidade' => $db['cidade'],
+                    'numero' => $db['numero'],
+                    'endereco' => $db['endereco'],
+                    'complemento' => $db['complemento'],
+                    'bairro' => $db['bairro'],
+                    'cep' => $db['cep'],
                 ]); 
         //     }
         // }
-        
     }
 
     public function editarSalvar(Request $request, $id)
     {
-
-        $db = user::find($id);
+        $db = endereco::find($id);
 
         $dados = $request->all();
+        
+        // $db['id_cliente'] = $db['id_cliente'];
+        $db['estado'] = $dados['estado'];
+        $db['cidade'] = $dados['cidade'];
+        $db['complemento'] = $dados['complemento'];
+        $db['numero'] = $dados['numero'];
+        $db['endereco'] = $dados['endereco'];
+        $db['bairro'] = $dados['bairro'];
+        $db['cep'] = $dados['cep'];
 
-        $teste2 = $request->file('avatar');
+        $db->save();
 
-        if(isset($teste2)){
-
-            $name_file = $teste2->getClientOriginalName();
-
-            $ext1 = pathinfo($name_file, PATHINFO_EXTENSION);
-
-            $item = base64_encode(file_get_contents($request->file('avatar')));
-
-            $db['avatar'] = $item;
-        };
-
-        if(isset($name_file)){
-            $name_img = $name_file;
-            $db['name_img'] = $name_img;
-        }
-
-        if(isset($ext1)){
-            $ext = $ext1;
-            $db['ext'] = $ext;
-        }
-
-        // VERIFICANDO SE HÁ UM E-MAIL EXISTENTE
-
-        $verific_email = DB::table('users')->where('email', $dados['email'])->count() == 1;
-
-        if ($db['email'] == $dados['email']) {
-            $name = $dados['name'];
-            $email = $dados['email'];
-            $telefone = $dados['telefone'];
-            $password = bcrypt($dados['password']);
-            
-            $db['name'] = $name;
-            $db['telefone'] = $telefone;
-            $db['email'] = $email;
-            $db['password'] = $password;
-
-            $db->save();
-
-            return redirect()->route('admin.usuarios')->with('mensagem', 'O usuário foi atualizado com sucesso!');
-        } else{
-
-            if($verific_email == "true") {
-
-                $name = $dados['name'];
-                $email = $db['email'];
-                $telefone = $dados['telefone'];
-                $password = bcrypt($dados['password']);
-                
-                $db['name'] = $name;
-                $db['telefone'] = $telefone;
-                $db['email'] = $email;
-                $db['password'] = $password;
-
-                $db->save();
-
-                return redirect()->route('admin.usuarios')->with('invalido', 'E-Mail já existente!');
-            } else{
-
-                $name = $dados['name'];
-                $email = $dados['email'];
-                $telefone = $dados['telefone'];
-                $password = bcrypt($dados['password']);
-                
-                $db['name'] = $name;
-                $db['telefone'] = $telefone;
-                $db['email'] = $email;
-                $db['password'] = $password;
-
-                $db->save();
-
-                return redirect()->route('admin.usuarios')->with('mensagem', 'O usuário foi atualizado com sucesso!');
-            }
-
-        }
-
+        return redirect()->route('endereco.index')->with('mensagem', 'Endereço atualizado com sucesso!');
     }
 
     public function confirm(Request $request, $id)
     {
-        $db = user::find($id);
-        return view('admin.usuarios.confirmDelete', [
+        $db = endereco::find($id);
+        return view('clientes.endereco.confirmDelete', [
             'id' => $id,
         ]);
     }
 
-     public function removerUsuario(request $request)
+     public function remover(request $request)
     {
-        
-        // $user = user::all();
+        $user = endereco::find($request->id);
+        $user->delete();
 
-        // foreach ($user as $users) {
-        //     if(Auth::user()->pdeletar_usuario == 0){
-        //         return redirect()->route('admin')->with('mensagem', 'Você não tem permissão para acessar esta página!');
-        //     }else{
-                $user = user::find($request->id);
-                $user->delete();
-
-                return redirect()->route('admin.usuarios')->with('invalido', 'O usuário foi deletado com sucesso!');
-        //     }
-        // }
- 
+        return redirect()->route('endereco.index')->with('invalido', 'O endereço foi deletado com sucesso!');
     }
 }

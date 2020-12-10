@@ -20,7 +20,7 @@
 		@endif
     </div>
 
-	<button type="submit" class="btn-cadastrar"><i class="icon ion-checkmark-circled"></i>Atualizar</button>
+	<button type="submit" class="button-cadastrar"><i class="icon ion-checkmark-circled"></i>Atualizar</button>
 </form>
 <script>
 

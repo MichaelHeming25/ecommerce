@@ -27,50 +27,97 @@
                      @include('clientes.endereco.modal')
                     <div class="body">
                         <div class="endereco-geral">
-                         <div class="title-body-endereco">
-                             <span>
-                                MEUS ENDEREÇOS
-                                <div class="linha-vertical" style="padding-bottom: 0;"><span></span></div>
-                             </span>
-                             <div class="dados-endereco">
-                                <button type="button" class="cadastrar-endereco btn-editar" data-id="{{ url('page/clientes/endereco/cadastrar') }}">
-                                    <label>Adicionar endereço</label>
-                                    <span><i class="fas fa-plus"></i></span>
-                                </button>
+                            <div class="title-body-endereco">
+                                <span>
+                                    MEUS ENDEREÇOS
+                                    <div class="linha-vertical" style="padding-bottom: 0;"><span></span></div>
+                                </span>
+                                <div class="dados-endereco">
+                                    <button type="button" class="button-cadastrar btn-cadastrar" data-id="{{ url('page/clientes/endereco/cadastrar') }}">
+                                        <label>Adicionar endereço</label>
+                                        <span><i class="fas fa-plus"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            @if (session('mensagem'))
+                                <div class="sacefull" style="width:100%;">
+                                    <div class="alert alert-success" style="width:100%;">
+                                        <span>
+                                            <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
+                                            {{ session('mensagem') }}
+                                        </span>
+                                        <div class="alert-close">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @elseif(session('invalido'))
+                                <div class="alert alert-danger" style="width:100%;">
+                                    <span>
+                                        <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
+                                        {{ session('invalido') }}
+                                    </span>
+                                    <div class="alert-close">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            @endif
+
+                            <div class="table">
+                                <table id="table_id" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Estado</th>
+                                            <th>Cidade</th>
+                                            <th>Bairro</th>
+                                            <th>Numero da casa</th>
+                                            <th>Endereço</th>
+                                            <th>Complemento</th>
+                                            <th>Cep</th>
+                                            <th>Editar / Remover</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for ($i = 0; $i < sizeof($endereco); $i++)
+                                            <tr>
+                                                @isset($endereco[$i]['estado'])
+                                                    <td>{{ $endereco[$i]['estado'] }}</td>
+                                                @endisset
+                                                @isset($endereco[$i]['cidade'])
+                                                    <td>{{ $endereco[$i]['cidade'] }}</td>
+                                                @endisset
+                                                @isset($endereco[$i]['bairro'])
+                                                    <td>{{ $endereco[$i]['bairro'] }}</td>
+                                                @endisset
+                                                @isset($endereco[$i]['numero'])
+                                                    <td>{{ $endereco[$i]['numero'] }}</td>
+                                                @endisset
+                                                @isset($endereco[$i]['endereco'])
+                                                    <td>{{ $endereco[$i]['endereco'] }}</td>
+                                                @endisset
+                                                @isset($endereco[$i]['complemento'])
+                                                    <td>{{ $endereco[$i]['complemento'] }}</td>
+                                                @endisset
+                                                @isset($endereco[$i]['cep'])
+                                                    <td>{{ $endereco[$i]['cep'] }}</td>
+                                                @endisset
+                                                <td>
+                                                    <div class="botoes">
+                                                        <button type="button" class="botao-editar btn-editar" style="margin-right: 10px;" data-id="{{ url('page/clientes/endereco/editar') }}/{{ $endereco[$i]['id'] }}"><span class="entypo-tools"><i class="fas fa-edit"></i></span></button>
+                                                        <button type="button" class="botao-remover" data-id="{{ url('page/clientes/endereco/confirm') }}/{{ $endereco[$i]['id'] }}"><i class="far fa-trash-alt"></i></button>  
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endfor
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        <table id="table_id" class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Numero da casa/apartamento</th>
-                                    <th>Endereço</th>
-                                    <th>Bairro</th>
-                                    <th>Complemento</th>
-                                    <th>Cnpj</th>
-                                    <th>Editar / Remover</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {{-- @for ($i = 0; $i < sizeof($users); $i++) --}}
-                                    <tr>
-                                        <td>120</td>
-                                        <td>Rua espanha</td>
-                                        <td>Jardim europa</td>
-                                        <td>Em frente a igreja</td>
-                                        <td>15616515615</td>
-
-                                        <td>
-                                            <div class="botoes">
-                                                {{-- <button type="button" class="botao-editar btn-editar" style="margin-right: 10px;" data-id="{{ url('admin/usuarios/editar') }}/{{ $data['id'] }}"><span class="entypo-tools"><i class="fas fa-edit"></i></span></button>
-                                                <button type="button" class="botao-remover" data-id="{{ url('admin/usuarios/confirm') }}/{{ $data['id'] }}"><i class="far fa-trash-alt"></i></button>   --}}
-                                            </div>
-                                        </td>
-                                    </tr>
-                                {{-- @endfor --}}
-                            </tbody>
-                        </table>
-                       
-                    </div>
                     </div>
                  </div>
             </div>
@@ -145,7 +192,7 @@
             $(modalName).modal('show'); 
 
             $.ajax({
-                url: '{{ url('admin/usuarios/viewCadastrar') }}',
+                url: '{{ url('page/clientes/endereco/cadastrar') }}',
                 type: 'get',
                 success: function(response){
                     console.log(response)        

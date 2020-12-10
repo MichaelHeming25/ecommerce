@@ -5270,12 +5270,22 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .alert {
   position: relative;
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
-
+.alert .alert-close i {
+  opacity: 0.8;
+  color: black;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease; 
+}
+.alert .alert-close i:hover {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  opacity: 1; 
+}
 .alert-heading {
   color: inherit;
 }
@@ -5328,6 +5338,9 @@ a.badge-dark:focus, a.badge-dark.focus {
 .alert-success {
   color: #155724;
   background-color: #d4edda;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
   border-color: #c3e6cb;
 }
 
@@ -5376,9 +5389,9 @@ a.badge-dark:focus, a.badge-dark.focus {
     opacity: 0.8;
     justify-content: space-between;
     align-items: center;
-    padding: 0.3rem 0.5rem;
+    padding: 0.5rem;
     border-color: #f5c6cb;
-    margin-bottom: 0rem;
+    margin-bottom: 1rem;
 }
 .alert .alert-close i {
     opacity: 0.6;
@@ -5928,7 +5941,7 @@ a.close.disabled {
   overflow-y: auto;
 }
 
-.modal, .modal-cadastrar, .modal-confirm, .modal-remover {
+.modal-drop, .modal, .modal-cadastrar, .modal-confirm, .modal-remover {
   position: fixed;
   top: 0;
   left: 0;
@@ -6075,6 +6088,9 @@ a.close.disabled {
   padding: 1rem 1rem;
   margin: -1rem -1rem -1rem auto;
 }
+.modal-header .close:focus{
+  outline: 0;
+}
 
 .modal-title {
   margin-bottom: 0;
@@ -6119,10 +6135,16 @@ a.close.disabled {
 }
 
 @media (min-width: 576px) {
+  /* .modal-dialog {
+    position: fixed;
+    right: 0;
+    margin: 5rem 3rem 0 auto;
+    max-width: 500px;
+} */
   .modal-dialog {
     max-width: 500px;
-    margin: 1.75rem auto;
-  }
+    margin: 2rem auto 0 auto;
+}
   .modal-dialog-scrollable {
     max-height: calc(100% - 3.5rem);
   }

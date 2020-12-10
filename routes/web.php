@@ -41,29 +41,41 @@ Route::get('/register', [App\Http\Controllers\LoginController::class, 'register'
 
 Route::post('/register/save', [App\Http\Controllers\LoginController::class, 'register_save'])->name('save.register');
 
+Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+
 Route::get('/avatar/{id}', [App\Http\Controllers\LoginController::class, 'editarAvatar'])->name('avatar.editar');
 Route::post('/avatar/editar/{id}', [App\Http\Controllers\LoginController::class, 'avatar'])->name('avatar.save');
 
 // LOGIN PELO FACEBOOK
 
-Route::get('login/facebook', [App\Http\Controllers\SocialiteController::class, 'redirectToProvider_facebook'])->name('login.facebook');
+Route::get('/login/facebook', [App\Http\Controllers\SocialiteController::class, 'redirectToProvider_facebook'])->name('login.facebook');
 
-Route::get('login/facebook/callback', [App\Http\Controllers\SocialiteController::class, 'handleProviderCallback_facebook']);
+Route::get('/login/facebook/callback', [App\Http\Controllers\SocialiteController::class, 'handleProviderCallback_facebook']);
 
 // LOGIN PELO GOOGLE
 
-Route::get('login/google', [App\Http\Controllers\SocialiteController::class, 'redirectToProvider'])->name('login.google');
+Route::get('/login/google', [App\Http\Controllers\SocialiteController::class, 'redirectToProvider'])->name('login.google');
 
-Route::get('login/google/callback', [App\Http\Controllers\SocialiteController::class, 'handleProviderCallback']);
+Route::get('/login/google/callback', [App\Http\Controllers\SocialiteController::class, 'handleProviderCallback']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // PÁGINA DO CLIENTE
 
-Route::get('page/clientes', [App\Http\Controllers\clientes\pageClientesController::class, 'index'])->name('page.clientes')->middleware('clientes');
+Route::get('/page/clientes', [App\Http\Controllers\clientes\pageClientesController::class, 'index'])->name('page.clientes')->middleware('clientes');
 
 // ENDEREÇO
 
-Route::get('page/clientes/endereco', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'index'])->name('endereco.index')->middleware('clientes');
+Route::get('/page/clientes/endereco', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'index'])->name('endereco.index')->middleware('clientes');
 
-Route::get('page/clientes/endereco/cadastrar', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'cadastrar'])->name('endereco.cadastrar')->middleware('clientes');
+Route::get('/page/clientes/endereco/cadastrar', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'cadastrar'])->name('endereco.cadastrar')->middleware('clientes');
+
+Route::post('/page/clientes/endereco/cadastrar/save', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'cadastrarSalvar'])->name('endereco.cadastrarSalvar')->middleware('clientes');
+
+Route::get('/page/clientes/endereco/editar/{id}', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'editar'])->name('endereco.editar')->middleware('clientes');
+
+Route::post('/page/clientes/endereco/editar/save/{id}', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'editarSalvar'])->name('endereco.editarSalvar')->middleware('clientes');
+
+Route::get('/page/clientes/endereco/confirm/{id}', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'confirm'])->name('endereco.confirm')->middleware('clientes');
+
+Route::get('/page/clientes/endereco/remover/{id}', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'remover'])->name('endereco.remover')->middleware('clientes');

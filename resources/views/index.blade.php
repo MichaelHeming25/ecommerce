@@ -16,7 +16,55 @@
     {{-- FONTS --}}
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet" type="text/css">
 </head>
+    <div class="modal-drop fade" id="ModalDropdown" tabindex="-1" aria-hidden="true" >
+        <div class="modal-dialog" style="position: fixed;right: 0;margin: 5rem 3rem 0 auto;">
+            <div class="modal-content">
+                <div class="modal-body" style="padding:0;">
+                    <div class="modal-body-dropdown">
+                        <a href="{{ route('page.clientes') }}">
+                            <i class="far fa-address-card"></i>
+                            Meu dados
+                        </a>
+                        <a href="{{ route('page.clientes') }}">
+                            <i class="fas fa-heart"></i>
+                            Favoritos
+                        </a>
+                        <a href="{{ route('page.clientes') }}">
+                            <i class="fas fa-shopping-cart"></i>
+                            Carrinho
+                        </a>
+                        <a href="{{ route('page.clientes') }}">
+                            <i class="far fa-comment-dots"></i>
+                            Notificações
+                        </a>
+                        <a href="{{ route('logout') }}">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="modal fade" id="ModalDropdown" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+        </div>
+    </div> --}}
+    </div>
 <body>
+    {{-- MENU DE NAVEGAÇÃO --}}
     <nav>
         <div class="header">
             <div class="logo">
@@ -43,14 +91,14 @@
      
             @if (session()->get('name'))
                 <div class="profile">
-                    <span style="padding-right: 0.3rem;">
-                        SEJA BEM VINDO,</span>
+                    
+                    <button type="button" class="modal-dropdown" data-toggle="modal" data-target="#ModalDropdown">
+                        <i class="fas fa-angle-down" style="padding-right:0.5rem;font-size:1.3rem;"></i>
                     @if (session()->get('tipo') == 'login')
                         {{ strtoupper(session()->get('usuario')) }}
                     @else
                         {{ strtoupper(session()->get('name')) }}
                     @endif
-                    <a href="{{ route('page.clientes') }}">
                         @if ($data['avatar'] == null)
                             <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')"></div>
                         @elseif(session()->get('tipo') == "facebook")
@@ -58,18 +106,31 @@
                         @else
                             <div class="avatar-img" style="background-image: url('data:image/{{$data['ext_img']}};base64,{{$data['avatar']}}')"></div>
                         @endif
-                    </a>
+                        
+                    
+                    </button>
                 </div>
             @else
-                <div class="menu-login">
+             <div class="menu-login">
+                    
                     <a href="{{ route('index.login') }}">
                         <i class="far fa-user-circle"></i>
-                        <span>Entrar</span>
+                        <span>ENTRAR</span>
                     </a>
+                    
                 </div>
+                {{-- <div class="menu-login">
+                    <button type="button" class="modal-dropdown" data-toggle="modal" data-target="#ModalDropdown">
+                        <i class="fas fa-angle-down"></i>
+                        <span>ENTRAR</span>
+                        <i class="far fa-user-circle"></i>
+                    </button>
+                </div> --}}
              @endif
         </div>
     </nav>
+
+    {{-- CARROSEL DE BANNERS --}}
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -92,6 +153,7 @@
         </a>
     </div>
     
+    {{-- CATEGORIAS --}}
     <div class="categorias">
         <div class="title-ofertas">
             <span>CATEGORIAS</span>
@@ -171,6 +233,7 @@
                   
     </div>
 
+    {{-- ANUNCIOS --}}
     <div class="ads">
         <img src="{{ asset('img/ads.png') }}">
     </div>
@@ -178,6 +241,7 @@
         <img src="{{ asset('img/ads2.png') }}">
     </div>
 
+    {{-- OFERTAS DA SEMANA --}}
     <div class="ofertas">
         <div class="title-ofertas">
             <span>OFERTAS DA SEMANA</span>
@@ -282,6 +346,7 @@
         </div>
     </div>
 
+    {{-- MAIS VENDIDOS --}}
     <div class="ofertas">
         <div class="title-ofertas">
             <span>MAIS VENDIDOS</span>
@@ -483,6 +548,7 @@
        
     </div>
 
+    {{-- ANUNCIOS --}}
     <div class="ads">
         <img src="{{ asset('img/ads.png') }}">
     </div>
@@ -490,6 +556,7 @@
         <img src="{{ asset('img/ads2.png') }}">
     </div>
 
+    {{-- FOOTER --}}
     <footer>
         <div class="footer-interno">
              <div class="rs">
@@ -512,12 +579,11 @@
         </div>
     </footer>
     
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('css/bootstrap/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('js/popper.js') }}"></script>
-    {{-- <script src="{{ asset('glide/dist/glide.js') }}"></script> --}}
-    <script>
-        
+    <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/popper.js') }}" ></script>
+<script>
+                
         $(".oferta-header").mouseover(function(){
             $(this).find(".eye").css('opacity', '1');
             $(this).find(".eye").css('transition', '0.2s linear');
@@ -529,46 +595,15 @@
             $(this).find(".bg").removeClass('filter');
         });
         
-        //  new Glide(".carrosel-noticiasm", {
-        //     type: "carousel",
-        //     perView: 5,
-        //     focusAt: "center",
-        //     gap: 40,
-
-        //     breakpoints: {
-        //         1366: {
-        //             perView: 5
-        //         },
-        //         1200: {
-        //             perView: 3
-        //         },
-        //         800: {
-        //             perView: 3
-        //         },
-        //         500: {
-        //             perView: 3
-        //         }
-        //     }
-        // }).mount();
-
         $(document).ready(function(){
             $(window).scroll(function(){
                 if (this.scrollY > 80) {
                     $("nav").addClass("sticky");
-                    // $(".categorias span").addClass("sticky-font");
                 } else {
                     $("nav").removeClass("sticky");
-                    // $(".categorias span").removeClass("sticky-font");
                 }
             });
-
-            // $('.header button').click(function (){
-            //     $(this).toggleClass("active")
-            //     $(".lado-direito").toggleClass("active")
-            // });
-
         });
-
 
     </script>
 </body>
