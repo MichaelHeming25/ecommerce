@@ -16,11 +16,65 @@
     {{-- FONTS --}}
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600" rel="stylesheet" type="text/css">
 </head>
-    <div class="modal-drop fade" id="ModalDropdown" tabindex="-1" aria-hidden="true" >
-        <div class="modal-dialog" style="position: fixed;right: 0;margin: 5rem 3rem 0 auto;">
-            <div class="modal-content">
-                <div class="modal-body" style="padding:0;">
-                    <div class="modal-body-dropdown">
+
+<body>
+    {{-- MENU DE NAVEGAÇÃO --}}
+    <nav>
+        <div class="header">
+            <div class="logo">
+                <a href="{{ route('index') }}">
+                    <img src="{{ asset('img/logo.png') }}">
+                </a>
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+            </div>
+           
+            <div class="rs">
+                <span>
+                    <i class="fab fa-facebook-f"></i>
+                </span>
+                <span>
+                    <i class="fab fa-whatsapp"></i>
+                </span>
+                <span>
+                    <i class="fab fa-instagram"></i>
+                </span>
+                <span>
+                    <i class="fab fa-twitter"></i>
+                </span>
+            </div>
+     
+            @if (session()->get('name'))
+                <div class="profile">
+                     <button type="submit modal-dropdown" onclick="dropdown()">
+                            <i class="fas fa-chevron-down"></i>
+
+                            @if (session()->get('tipo') == 'login')
+                                {{ session()->get('usuario') }}
+                            @else
+                                {{ session()->get('name') }}
+                            @endif
+
+                            @if ($data['avatar'] == null)
+                                <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')"></div>
+                            @elseif(session()->get('tipo') == "facebook")
+                                <div class="avatar-img" style="background-image: url('{{ session()->get('avatar') }}')"></div>
+                            @else
+                                <div class="avatar-img" style="background-image: url('data:image/{{$data['ext_img']}};base64,{{$data['avatar']}}')"></div>
+                            @endif
+                    </button>
+                    
+                     <div class="modal-dropdown2">
+                         <div class="header-modal-dropdown2">
+                            @if (session()->get('tipo') == 'login')
+                                Olá, seja bem vindo {{ session()->get('usuario') }}!
+                            @else
+                                Olá, seja bem vindo {{ session()->get('name') }}!
+                            @endif
+                         </div>
+                         <div class="linha-vertical" style="width:80%;"><span></span></div>
                         <a href="{{ route('page.clientes') }}">
                             <i class="far fa-address-card"></i>
                             Meu dados
@@ -42,91 +96,159 @@
                             Sair
                         </a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- <div class="modal fade" id="ModalDropdown" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            ...
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-        </div>
-    </div> --}}
-    </div>
-<body>
-    {{-- MENU DE NAVEGAÇÃO --}}
-    <nav>
-        <div class="header">
-            <div class="logo">
-                <img src="{{ asset('img/logo.png') }}">
-            </div>
-            <div class="rs">
-                <span>
-                    <i class="fab fa-facebook-f"></i>
-                </span>
-                <span>
-                    <i class="fab fa-whatsapp"></i>
-                </span>
-                <span>
-                    <i class="fab fa-instagram"></i>
-                </span>
-                <span>
-                    <i class="fab fa-twitter"></i>
-                </span>
-            </div>
-             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                <button class="my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            </form>
-     
-            @if (session()->get('name'))
-                <div class="profile">
-                    
-                    <button type="button" class="modal-dropdown" data-toggle="modal" data-target="#ModalDropdown">
-                        <i class="fas fa-angle-down" style="padding-right:0.5rem;font-size:1.3rem;"></i>
-                    @if (session()->get('tipo') == 'login')
-                        {{ strtoupper(session()->get('usuario')) }}
-                    @else
-                        {{ strtoupper(session()->get('name')) }}
-                    @endif
-                        @if ($data['avatar'] == null)
-                            <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')"></div>
-                        @elseif(session()->get('tipo') == "facebook")
-                            <div class="avatar-img" style="background-image: url('{{ session()->get('avatar') }}')"></div>
-                        @else
-                            <div class="avatar-img" style="background-image: url('data:image/{{$data['ext_img']}};base64,{{$data['avatar']}}')"></div>
-                        @endif
-                        
-                    
-                    </button>
+
                 </div>
             @else
              <div class="menu-login">
-                    
                     <a href="{{ route('index.login') }}">
-                        <i class="far fa-user-circle"></i>
-                        <span>ENTRAR</span>
+                        <i class="far fa-user"></i>
+                        <span>Entrar</span>
                     </a>
-                    
                 </div>
-                {{-- <div class="menu-login">
-                    <button type="button" class="modal-dropdown" data-toggle="modal" data-target="#ModalDropdown">
-                        <i class="fas fa-angle-down"></i>
-                        <span>ENTRAR</span>
-                        <i class="far fa-user-circle"></i>
-                    </button>
-                </div> --}}
              @endif
+        </div>
+        <div class="sub-header">
+            <div class="more-categories">
+                <button onclick="menu_categories()" class="button-more">
+                    <i class="fas fa-list-ul"></i>
+                
+                    Mostrar mais categorias
+                </button>
+                <div class="menu-left-categories">
+                    <ul id="nav">
+                        <li><a href="#">
+                                <span><i class="fas fa-male"></i> Homem</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Camiseta</a></li>
+                                <li><a href="#">Tênis</a></li>
+                                <li><a href="#">Calça</a></li>
+                                <li><a href="#">Boné</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><i class="fas fa-male"></i> Mulher</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Sapato</a></li>
+                                <li><a href="#">Acessorios</a></li>
+                                <li><a href="#">Maquiagem</a></li>
+                                <li><a href="#">Camisa</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><i class="fas fa-child"></i> Crianças</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Brinquedos</a></li>
+                                <li><a href="#">Camisas</a></li>
+                                <li><a href="#">Tênis</a></li>
+                                <li><a href="#">Shorts</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><i class="fas fa-desktop"></i> Eletronicos</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Teclado</a></li>
+                                <li><a href="#">Mouse</a></li>
+                                <li><a href="#">Notebook</a></li>
+                                <li><a href="#">Smartphone</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">
+                                <span><i class="fas fa-male"></i> Homem</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Camiseta</a></li>
+                                <li><a href="#">Tênis</a></li>
+                                <li><a href="#">Calça</a></li>
+                                <li><a href="#">Boné</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span><i class="fas fa-male"></i> Mulher</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Sapato</a></li>
+                                <li><a href="#">Acessorios</a></li>
+                                <li><a href="#">Maquiagem</a></li>
+                                <li><a href="#">Camisa</a></li>
+                            </ul>
+                        </li>
+                         <li>
+                            <a href="#">
+                                <span><i class="fas fa-child"></i> Crianças</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Brinquedos</a></li>
+                                <li><a href="#">Camisas</a></li>
+                                <li><a href="#">Tênis</a></li>
+                                <li><a href="#">Shorts</a></li>
+                            </ul>
+                        </li>
+                          <li>
+                            <a href="#">
+                                <span><i class="fas fa-desktop"></i> Eletronicos</span>
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                            <ul>
+                                <li><a href="#">Teclado</a></li>
+                                <li><a href="#">Mouse</a></li>
+                                <li><a href="#">Notebook</a></li>
+                                <li><a href="#">Smartphone</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    {{-- <button type="submit">
+                        <span><i class="fas fa-male"></i> Homem</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="subheader">teste</div>
+                    <button type="submit">
+                        <span><i class="fas fa-male"></i> Mulher</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button type="submit">
+                        <span><i class="fas fa-child"></i> Crianças</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button type="submit">
+                        <span><i class="fas fa-desktop"></i> Eletronicos</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button type="submit">
+                        <span><i class="fas fa-male"></i> Homens</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button type="submit">
+                        <span><i class="fas fa-male"></i> Homens</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button href="" type="submit">
+                        <span><i class="fas fa-male"></i> Homens</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button> --}}
+                </div>
+               
+            </div>
+            <div class="menu-categories">
+                <a href="http://"><i class="fas fa-male"></i> Homem</a>
+                <a href="http://"><i class="fas fa-female"></i> Mulher</a>
+                <a href="http://"><i class="fas fa-child"></i> Crianças</a>
+                <a href="http://"><i class="fas fa-desktop"></i> Eletronicos</a>
+            </div>
         </div>
     </nav>
 
@@ -559,7 +681,7 @@
     {{-- FOOTER --}}
     <footer>
         <div class="footer-interno">
-             <div class="rs">
+             <div class="rs-footer">
                 <span>
                     <i class="fab fa-facebook-f"></i>
                 </span>
@@ -578,6 +700,15 @@
             <span>TODOS OS DIREITOS RESERVADOS</span>
         </div>
     </footer>
+
+    <div class="popup">
+        <div class="whats">
+            <a href="https://api.whatsapp.com/send?phone=5566997177126&text=Olá, gostaria de tirar algumas duvidas!">
+                <i class="fab fa-whatsapp"></i>
+                <span>Converse conosco!</span>
+            </a>
+        </div>
+    </div>
     
     <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
     <script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
@@ -603,6 +734,22 @@
                     $("nav").removeClass("sticky");
                 }
             });
+        });
+
+        function dropdown(){
+            $('.modal-dropdown2').toggleClass('active-drop')
+            $('.fa-chevron-down').toggleClass('rotate-icon')
+        }
+        
+        function menu_categories(){
+            $('.menu-left-categories').toggleClass('menu-categories-active')
+        }
+
+         $(".menu-left-categories ul li a").mouseover(function(){
+            $(this).find(".menu-left-categories ul li a span").addClass('drop-color');
+        });
+        $(".menu-left-categories ul li a").mouseout(function(){
+            $(this).find(".menu-left-categories ul li a span").removeClass('drop-color');
         });
 
     </script>

@@ -24,17 +24,19 @@
     
     <div class="login-register">
         
-        <form method="POST" action="{{ route('save.register') }}">
+        <form method="POST" action="{{ route('save.register') }}" autocomplete="off">
             @csrf
             <div class="header-login">
-                <img src="{{ asset('img/logo.png') }}">
+                <a href="{{ route('index') }}">
+                    <img src="{{ asset('img/logo.png') }}">
+                </a>
                 <div class="title">CADASTRAR</div>
                 <div class="linha-vertical"><span></span></div>
                 <div class="conteudo-register">
                     <div class="bloco1">
                         <div class="group-register">
                             <div class="group">      
-                                <input type="text" name="name" id="name" class="name" required autocomplete="off">
+                                <input type="text" name="name" id="name" class="name" required>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Nome</label>
@@ -42,7 +44,7 @@
                         </div>
                         <div class="group-register">
                             <div class="group">      
-                                <input type="email" name="email" id="email" class="email" required autocomplete="off">
+                                <input type="email" name="email" id="email" class="email" required>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>E-Mail</label>
@@ -52,7 +54,7 @@
                     <div class="bloco2">
                          <div class="group-register">
                             <div class="group">      
-                                <input type="text" name="telefone" id="telefone" class="telefone" required autocomplete="off">
+                                <input type="text" name="telefone" id="telefone" class="telefone" required>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Telefone</label>
@@ -60,7 +62,7 @@
                         </div>
                          <div class="group-register">
                             <div class="group">      
-                                <input type="text" name="cpf" id="cpf" class="cpf" required autocomplete="off">
+                                <input type="text" name="cpf" id="cpf" class="cpf" required>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Cpf</label>
@@ -70,7 +72,7 @@
                      <div class="bloco2">
                          <div class="group-register">
                             <div class="group">      
-                                <input type="text" name="usuario" id="usuario" class="usuario" required autocomplete="off">
+                                <input type="text" name="usuario" id="usuario" class="usuario" required>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Usuário</label>
@@ -78,7 +80,7 @@
                         </div>
                          <div class="group-register">
                             <div class="group">      
-                                <input type="password" name="password" id="password" class="password" required autocomplete="off">
+                                <input type="password" name="password" id="password" class="password" required>
                                 <span class="highlight"></span>
                                 <span class="bar"></span>
                                 <label>Senha</label>
@@ -101,7 +103,7 @@
                             </div>
                         </div>
                     @elseif(session('invalido'))
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger" style="margin:0;width:100%;">
                             <span>
                                 <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
                                 {{ session('invalido') }}
@@ -127,7 +129,7 @@
                     <a href="{{ route('index.login') }}">
                         <span>Logue-se aqui!</span>
                     </a>
-                    <div class="more-login">
+                    {{-- <div class="more-login">
                         <div class="title-more">OUTROS MEIOS DE LOGIN</div>
                         <div class="bloco-more-items">
                             <a href="{{ route('login.facebook') }}">
@@ -137,7 +139,7 @@
                                 <i class="fab fa-google-plus-g"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </form>

@@ -334,7 +334,7 @@
     justify-content: space-between;
     font-size: 2rem;
     font-family: "montserrat";
-    padding: 2rem 0;
+    padding: 1rem 0rem 1rem 0;
 }
 .modal-header-confirm {
     display: -webkit-box;

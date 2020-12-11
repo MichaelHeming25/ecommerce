@@ -65,7 +65,7 @@
                             </div>
                         </div>
                     @elseif(session('invalido'))
-                        <div class="alert alert-danger">
+                        <div class="alert alert-danger" style="margin: 0;">
                             <span>
                                 <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
                                 {{ session('invalido') }}
