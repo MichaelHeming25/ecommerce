@@ -10903,4 +10903,9 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
-
+.card-body form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

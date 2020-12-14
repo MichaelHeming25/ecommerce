@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // Route::post('/password/reset', 'Auth\ResetPasswordController@reset');
 
+Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
 
@@ -79,3 +79,28 @@ Route::post('/page/clientes/endereco/editar/save/{id}', [App\Http\Controllers\cl
 Route::get('/page/clientes/endereco/confirm/{id}', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'confirm'])->name('endereco.confirm')->middleware('clientes');
 
 Route::get('/page/clientes/endereco/remover/{id}', [App\Http\Controllers\clientes\endereco\enderecoController::class, 'remover'])->name('endereco.remover')->middleware('clientes');
+
+Route::prefix('/admin')->group(function () {
+
+    Route::get('/', [App\Http\Controllers\admin\adminController::class, 'index'])->name('admin');
+    // Route::get('/', [App\Http\Controllers\admin\adminController::class, 'index'])->name('admin');
+    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
+    Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+    // Registration Routes...
+    Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
+
+    // Password Reset Routes...
+    Route::get('/password/reset', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/password/email', [App\Http\Controllers\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('/password/reset/{token}', [App\Http\Controllers\Auth\ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/password/reset', [App\Http\Controllers\Auth\ResetPasswordController::class, 'reset']);
+
+    // Route::get('/home', [App\Http\Controllers\admin\adminController::class, 'home'])->name('admin.home');
+
+    // USUARIOS
+    Route::get('/usuarios', [App\Http\Controllers\admin\UsuariosController::class, 'index'])->name('admin.usuarios');
+
+});

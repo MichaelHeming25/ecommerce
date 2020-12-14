@@ -66,15 +66,18 @@
                             @endif
                     </button>
                     
-                     <div class="modal-dropdown2">
-                         <div class="header-modal-dropdown2">
+                    <div class="modal-dropdown2">
+                        <div class="header-modal-dropdown2">
                             @if (session()->get('tipo') == 'login')
                                 Olá, seja bem vindo {{ session()->get('usuario') }}!
                             @else
                                 Olá, seja bem vindo {{ session()->get('name') }}!
                             @endif
-                         </div>
-                         <div class="linha-vertical" style="width:80%;"><span></span></div>
+                        </div>
+                        <div class="linha-vertical" style="width:80%;">
+                            <span>
+                            </span>
+                        </div>
                         <a href="{{ route('page.clientes') }}">
                             <i class="far fa-address-card"></i>
                             Meu dados
@@ -96,7 +99,6 @@
                             Sair
                         </a>
                     </div>
-
                 </div>
             @else
              <div class="menu-login">
@@ -745,7 +747,7 @@
             $('.menu-left-categories').toggleClass('menu-categories-active')
         }
 
-         $(".menu-left-categories ul li a").mouseover(function(){
+        $(".menu-left-categories ul li a").mouseover(function(){
             $(this).find(".menu-left-categories ul li a span").addClass('drop-color');
         });
         $(".menu-left-categories ul li a").mouseout(function(){
