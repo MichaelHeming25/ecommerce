@@ -38,7 +38,7 @@ class LoginController extends Controller
                 }
             }
         } else{
-            return redirect()->route('index.login')->with('invalido', 'Essa conta não existe!');
+            return redirect()->route('index.login')->with('invalido', 'Usuário inexistente!');
         }
     }
 
@@ -56,7 +56,7 @@ class LoginController extends Controller
         $verific_email = DB::table('clientes')->where('email', $request['email'])->count() == 1;
 
         if($verific_email == "true") {
-            return redirect()->route('index.register')->with('invalido', 'E-Mail já cadastrado!');
+            return redirect()->route('index.register')->with('invalido', 'E-Mail já existente!');
         } else{
 
             $db->name = $request->input('name');
@@ -67,7 +67,7 @@ class LoginController extends Controller
             $db->password = encrypt($request->input('password'));
             $db->save();
 
-            return redirect()->route('index.login');
+            return redirect()->route('index.register')->with('mensagem', 'Cadastrado com sucesso!');
         }
     }
 

@@ -49,26 +49,14 @@
                         <span class="bar"></span>
                         <label>Senha</label>
                     </div>
+                </div>
 
-                    @if (session('mensagem'))
-                        <div class="sacefull">
-                            <div class="alert alert-success">
-                                <span>
-                                    <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
-                                    {{ session('mensagem') }}
-                                </span>
-                                <div class="alert-close">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    @elseif(session('invalido'))
-                        <div class="alert alert-danger" style="margin: 0;">
+                @if (session('mensagem'))
+                    <div class="sacefull">
+                        <div class="alert alert-success">
                             <span>
                                 <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
-                                {{ session('invalido') }}
+                                {{ session('mensagem') }}
                             </span>
                             <div class="alert-close">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -76,9 +64,20 @@
                                 </button>
                             </div>
                         </div>
-                    @endif
-
-                </div>
+                    </div>
+                @elseif(session('invalido'))
+                    <div class="alert alert-danger">
+                        <span>
+                            <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
+                            {{ session('invalido') }}
+                        </span>
+                        <div class="alert-close">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
 
                 <div class="button">
                     <button type="submit">Entrar</button>

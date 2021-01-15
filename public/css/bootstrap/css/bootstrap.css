@@ -5270,16 +5270,26 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .alert {
   position: relative;
-  padding: 0.5rem;
-  margin: 1rem 0;
+  padding: 0.2rem 0.5rem;
+  margin: 0rem 0 0.5rem 0;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
 .alert .alert-close i {
   opacity: 0.8;
   color: black;
+  font-size: 1rem;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease; 
+}
+.close span{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.sacefull{
+  width: 90%;
 }
 .alert .alert-close i:hover {
   -webkit-transition: all 0.3s ease;
@@ -5382,16 +5392,17 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .alert-danger {
     color: #721c24;
-    width: 80%;
+    width: 90%;
     background-color: #ffc4c980;
     margin-top: 0rem;
     display: flex;
     opacity: 0.8;
+    font-size: 0.9rem;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem;
+    padding: 0.2rem 0.5rem;
     border-color: #f5c6cb;
-    margin: 0rem 0 1rem 0;
+    margin: 0rem 0 0.5rem 0;
 }
 .alert .alert-close i {
     opacity: 0.6;

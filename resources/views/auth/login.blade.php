@@ -29,25 +29,34 @@
                 <a href="{{route('index')}}">
                     <img src="{{ asset('img/logo2.png') }}">
                 </a>
-                @if (session()->has('name'))
-                    <span style="padding-top: 3rem;font-size:2rem;font-family:'montserrat';color:#b3b3b3;">Usuário já logado</span>
-                @else
                 <div class="title">LOGIN</div>
                 <div class="linha-vertical" style="padding-bottom: 0;"><span></span></div>
                 <div class="conteudo-login">
                   
                     <div class="group">      
-                        <input type="text" name="email" id="email" class="email" required autocomplete="off">
+                        <input type="text" name="email" id="email" class="email @error('email') is-invalid @enderror" required autocomplete="email" autofocus>
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>E-Mail</label>
+
+                        @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
                     
                     <div class="group">      
-                        <input type="password" name="password" id="password" class="password" required autocomplete="off">
+                        <input type="password" name="password" id="password" class="password @error('password') is-invalid @enderror" required autocomplete="current-password">
                         <span class="highlight"></span>
                         <span class="bar"></span>
                         <label>Senha</label>
+
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     @if (session('mensagem'))
@@ -93,7 +102,6 @@
                     </a>
                 </div> --}}
             </div>
-            @endif
         </form>
     </div>
     

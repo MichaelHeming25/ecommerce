@@ -153,7 +153,7 @@
             $(this).removeClass('filter2');
         });
 
-         // EDITAR CLIENTE
+        // EDITAR CLIENTE
         $(document).on('click','.btn-editar', function(e){
             e.preventDefault();
 

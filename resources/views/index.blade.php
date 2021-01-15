@@ -49,21 +49,21 @@
             @if (session()->get('name'))
                 <div class="profile">
                      <button type="submit modal-dropdown" onclick="dropdown()">
-                            <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down"></i>
 
-                            @if (session()->get('tipo') == 'login')
-                                {{ session()->get('usuario') }}
-                            @else
-                                {{ session()->get('name') }}
-                            @endif
+                        @if (session()->get('tipo') == 'login')
+                            {{ session()->get('usuario') }}
+                        @else
+                            {{ session()->get('name') }}
+                        @endif
 
-                            @if ($data['avatar'] == null)
-                                <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')"></div>
-                            @elseif(session()->get('tipo') == "facebook")
-                                <div class="avatar-img" style="background-image: url('{{ session()->get('avatar') }}')"></div>
-                            @else
-                                <div class="avatar-img" style="background-image: url('data:image/{{$data['ext_img']}};base64,{{$data['avatar']}}')"></div>
-                            @endif
+                        @if ($data['avatar'] == null)
+                            <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')"></div>
+                        @elseif(session()->get('tipo') == "facebook")
+                            <div class="avatar-img" style="background-image: url('{{ session()->get('avatar') }}')"></div>
+                        @else
+                            <div class="avatar-img" style="background-image: url('data:image/{{$data['ext_img']}};base64,{{$data['avatar']}}')"></div>
+                        @endif
                     </button>
                     
                     <div class="modal-dropdown2">
@@ -94,7 +94,7 @@
                             <i class="far fa-comment-dots"></i>
                             Notificações
                         </a>
-                        <a href="{{ route('logout') }}">
+                        <a href="{{ route('logout.login') }}">
                             <i class="fas fa-sign-out-alt"></i>
                             Sair
                         </a>
@@ -213,35 +213,6 @@
                             </ul>
                         </li>
                     </ul>
-                    {{-- <button type="submit">
-                        <span><i class="fas fa-male"></i> Homem</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <div class="subheader">teste</div>
-                    <button type="submit">
-                        <span><i class="fas fa-male"></i> Mulher</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button type="submit">
-                        <span><i class="fas fa-child"></i> Crianças</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button type="submit">
-                        <span><i class="fas fa-desktop"></i> Eletronicos</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button type="submit">
-                        <span><i class="fas fa-male"></i> Homens</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button type="submit">
-                        <span><i class="fas fa-male"></i> Homens</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button href="" type="submit">
-                        <span><i class="fas fa-male"></i> Homens</span>
-                        <i class="fas fa-chevron-right"></i>
-                    </button> --}}
                 </div>
                
             </div>
@@ -278,8 +249,8 @@
     </div>
     
     {{-- CATEGORIAS --}}
-    <div class="categorias">
-        <div class="title-ofertas">
+    {{-- <div class="categorias">
+        <div class="title-destaques">
             <span>CATEGORIAS</span>
             <div class="linha-vertical"><span></span></div>
         </div>
@@ -355,23 +326,15 @@
             </span>
         </div>
                   
-    </div>
+    </div> --}}
 
-    {{-- ANUNCIOS --}}
-    <div class="ads">
-        <img src="{{ asset('img/ads.png') }}">
-    </div>
-    <div class="ads">
-        <img src="{{ asset('img/ads2.png') }}">
-    </div>
-
-    {{-- OFERTAS DA SEMANA --}}
-    <div class="ofertas">
-        <div class="title-ofertas">
-            <span>OFERTAS DA SEMANA</span>
+    {{-- DESTAQUES DA SEMANA --}}
+    <div class="destaques">
+        <div class="title-destaques">
+            <span>DESTAQUES DA SEMANA</span>
             <div class="linha-vertical"><span></span></div>
         </div>
-        <div class="ofertas-interno">
+        <div class="destaques-interno">
             
             <a href="#">
                 <div class="oferta-item">
@@ -470,13 +433,18 @@
         </div>
     </div>
 
+     {{-- ANUNCIOS --}}
+    <div class="ads">
+        <img src="{{ asset('img/ads.png') }}">
+    </div>
+
     {{-- MAIS VENDIDOS --}}
-    <div class="ofertas">
-        <div class="title-ofertas">
+    <div class="destaques">
+        <div class="title-destaques">
             <span>MAIS VENDIDOS</span>
             <div class="linha-vertical"><span></span></div>
         </div>
-        <div class="ofertas-interno">
+        <div class="destaques-interno">
 
             <a href="#">
                 <div class="oferta-item">
@@ -592,7 +560,7 @@
                 </div>
             </a>
 
-            <a href="#">
+            {{-- <a href="#">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
@@ -666,18 +634,10 @@
                         </div>
                     </div>
                 </div>
-            </a>
+            </a> --}}
 
         </div>
        
-    </div>
-
-    {{-- ANUNCIOS --}}
-    <div class="ads">
-        <img src="{{ asset('img/ads.png') }}">
-    </div>
-    <div class="ads">
-        <img src="{{ asset('img/ads2.png') }}">
     </div>
 
     {{-- FOOTER --}}

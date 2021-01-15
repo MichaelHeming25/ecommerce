@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('DataTables/datatables.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('glide/dist/css/glide.core.css') }}">
     <link rel="stylesheet" href="{{ asset('glide/dist/css/glide.theme.css') }}"> --}}
     {{-- ICONS --}}
@@ -18,59 +19,9 @@
 </head>
 
 <body>
-    {{-- MENU DE NAVEGAÇÃO --}}
-    <nav>
-        <div class="header">
-            {{-- <div class="logo">
-                <a href="{{ route('index') }}">
-                    
-                </a>
-            </div> --}}
-            <button onclick="menu_categories()" class="button-more">
-                <i class="fas fa-list-ul"></i>
-                <img src="{{ asset('img/logo2.png') }}" style="height: 3rem;padding-left:2.5rem;">
-            </button>
-     
-            <div class="profile">
-
-                <button type="submit modal-dropdown" onclick="dropdown()">
-                    <i class="fas fa-chevron-down"></i>
-
-                    Olá, seja bem vindo {{ Auth::user()->name }}!
-
-                    {{-- @if ($data['avatar'] == null) --}}
-                        <div class="avatar-img" style="background-image: url('{{ asset('img/user2.png') }}')"></div>
-                    {{-- @elseif(session()->get('tipo') == "facebook")
-                        <div class="avatar-img" style="background-image: url('{{ session()->get('avatar') }}')"></div>
-                    @else
-                        <div class="avatar-img" style="background-image: url('data:image/{{$data['ext_img']}};base64,{{$data['avatar']}}')"></div>
-                    @endif --}}
-                </button>
-                
-                <div class="modal-dropdown2">
-                    <div class="header-modal-dropdown2">
-                        {{ Auth::user()->email }}
-                    </div>
-                    <div class="linha-vertical" style="width:80%;">
-                        <span>
-                        </span>
-                    </div>
-                    <a href="{{ route('page.clientes') }}">
-                        <i class="far fa-address-card"></i>
-                        Meu dados
-                    </a>
-                    <a href="{{ route('logout') }}">
-                        <i class="fas fa-sign-out-alt"></i>
-                        Sair
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </nav>
-
+    @include('admin.templates.nav-top')
     @include('admin.templates.nav-left')
-
+    @include('admin.usuarios.modal')
     <div class="container-geral">
         <div class="header-container">
             <span>
@@ -84,10 +35,39 @@
                     <i class="fas fa-info"></i>
                     Informação dos usuários cadastrados
                 </span>
-                 <button type="button" class="btn-brand btn-elevate btn-icon-sm btn-cadastrar" data-idc="{{ url('/usuarios/viewCadastrar') }}">
-                    <i class="fa fa-plus"></i> Novo Usuário
+                <button type="button" class="button-cadastrar btn-cadastrar" data-id="{{ url('/admin/usuarios/viewCadastrar') }}">
+                    <span>Novo usuário</span>
+                    <i class="fas fa-plus"></i>
                 </button>
             </div>
+
+             @if (session('mensagem'))
+                <div class="sacefull" style="width:100%;">
+                    <div class="alert alert-success" style="width:100%;">
+                        <span>
+                            <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
+                            {{ session('mensagem') }}
+                        </span>
+                        <div class="alert-close">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            @elseif(session('invalido'))
+                <div class="alert alert-danger" style="width:100%;">
+                    <span>
+                        <i class="far fa-check-circle" style="padding-right:0.5rem;"></i>
+                        {{ session('invalido') }}
+                    </span>
+                    <div class="alert-close">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="fas fa-times"></i></span>
+                        </button>
+                    </div>
+                </div>
+            @endif
 
             <table id="table_id" class="table table-striped table-bordered">
                 <thead>
@@ -102,7 +82,7 @@
                     @for ($i = 0; $i < sizeof($users); $i++)
                         <tr>
                             @isset($users[$i]['name'])
-                            <td>teste</td>
+                            <td>{{ $users[$i]['name'] }}</td>
                             @endisset
 
                             @isset($users[$i]['email'])
@@ -116,7 +96,7 @@
                             <td>
                                 <div class="botoes">
                                     <button type="button" class="botao-editar btn-editar" style="margin-right: 10px;" data-id="{{ url('admin/usuarios/editar') }}/{{ $users[$i]['id'] }}"><span class="entypo-tools"><i class="fas fa-edit"></i></span></button>
-                                    <button type="button" class="botao-remover" data-id="{{ url('admin/usuarios/confirm') }}/{{ $users[$i]['id'] }}"><i class="far fa-trash-alt"></i></button>  
+                                    <button type="button" class="botao-remover" data-id="{{ url('admin/usuarios/confirm') }}/{ $users[$i]['id'] }}"><i class="far fa-trash-alt"></i></button>  
                                 </div>
                             </td>
                         </tr>
@@ -165,7 +145,7 @@
             $(this).find(".menu-left-categories ul li a span").removeClass('drop-color');
         });
         
-         // EDITAR CLIENTE
+        // EDITAR CLIENTE
         $(document).on('click','.btn-editar', function(e){
             e.preventDefault();
 
@@ -204,7 +184,7 @@
             $(modalName).modal('show'); 
 
             $.ajax({
-                url: '{{ url('admin/usuarios/viewCadastrar') }}',
+                url: '{{ url('/admin/usuarios/viewCadastrar') }}',
                 type: 'get',
                 success: function(response){
                     console.log(response)        

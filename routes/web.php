@@ -41,7 +41,7 @@ Route::get('/register', [App\Http\Controllers\LoginController::class, 'register'
 
 Route::post('/register/save', [App\Http\Controllers\LoginController::class, 'register_save'])->name('save.register');
 
-Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('logout.login');
 
 Route::get('/avatar/{id}', [App\Http\Controllers\LoginController::class, 'editarAvatar'])->name('avatar.editar');
 Route::post('/avatar/editar/{id}', [App\Http\Controllers\LoginController::class, 'avatar'])->name('avatar.save');
@@ -86,7 +86,7 @@ Route::prefix('/admin')->group(function () {
     // Route::get('/', [App\Http\Controllers\admin\adminController::class, 'index'])->name('admin');
     Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
-    Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+    Route::get('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
 
     // Registration Routes...
     Route::get('/register', [App\Http\Controllers\Auth\RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -103,4 +103,12 @@ Route::prefix('/admin')->group(function () {
     // USUARIOS
     Route::get('/usuarios', [App\Http\Controllers\admin\UsuariosController::class, 'index'])->name('admin.usuarios');
 
+    Route::get('/usuarios/viewCadastrar', [App\Http\Controllers\admin\UsuariosController::class, 'viewCadastrar'])->name('usuarios.viewCadastrar');
+    Route::post('/usuarios/cadastrar', [App\Http\Controllers\admin\UsuariosController::class, 'cadastrar'])->name('usuarios.cadastrar');
+
+    Route::get('/usuarios/editar/{id}', [App\Http\Controllers\admin\UsuariosController::class, 'editar'])->name('usuarios.editar');
+    Route::post('/usuarios/editar/save/{id}', [App\Http\Controllers\admin\UsuariosController::class, 'editarSalvar'])->name('usuarios.editarSalvar');
+
+    Route::get('/usuarios/confirm/{id}', [App\Http\Controllers\admin\UsuariosController::class, 'confirm'])->name('usuarios.confirm');
+    Route::get('/usuarios/remover/{id}', [App\Http\Controllers\admin\UsuariosController::class, 'remover'])->name('usuarios.remover');
 });

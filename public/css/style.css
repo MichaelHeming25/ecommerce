@@ -92,7 +92,7 @@ body {
     justify-content: center;
     width: 18rem;
     flex-direction: column;
-    transform: translateY(-30px);
+    transform: translateX(400px);
     transition: 0.3s linear;
     opacity: 0;
 }
@@ -128,7 +128,7 @@ body {
 }
 .active-drop {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateX(0px);
     transition: 0.3s linear;
 }
 
@@ -311,7 +311,7 @@ nav {
     width: 100%;
     height: 100%;
     justify-content: space-evenly;
-    padding: 4rem 0 4rem 0;
+    padding: 4rem 6rem 4rem 6rem;
     flex-wrap: wrap;
 }
 .categorias .bloco-categorias span {
@@ -323,7 +323,7 @@ nav {
     justify-content: space-evenly;
     flex-direction: column;
     transition: 0.2s ease-out;
-    margin: 2rem 4rem;
+    margin: 2rem;
 }
 .categorias .bloco-categorias span:hover {
     background: #fff;
@@ -346,7 +346,7 @@ nav {
 .bloco-categorias {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
 }
@@ -450,17 +450,20 @@ nav {
     justify-content: center;
     flex-wrap: wrap;
 }
-.ofertas {
+.destaques {
     display: flex;
-    padding: 4rem 0 4rem 0;
+    padding: 4rem 6rem 4rem 6rem;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
     flex-direction: column;
 }
+.destaques:first-child {
+    padding: 4rem 0rem 0rem 0rem;
+}
 .oferta-item {
     height: 100%;
-    width: 20rem;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     display: flex;
@@ -499,12 +502,12 @@ nav {
     height: 100%;
 }
 .bg img {
-    height: 10rem;
+    height: 8rem;
 }
 .filter {
     filter: grayscale(1);
     transition: 0.2s linear;
-    transform: scale(1.1);
+    transform: scale(1.06);
 }
 .opacity {
     opacity: 1;
@@ -527,22 +530,25 @@ nav {
     font-family: "montserrat";
     font-weight: 600;
 }
-.ofertas-interno {
+.destaques-interno {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
-.ofertas-interno a:hover {
+.destaques-interno a {
+    width: 32%;
+}
+.destaques-interno a:hover {
     text-decoration: none;
 }
-.title-ofertas {
+.title-destaques {
     width: 100%;
     font-weight: 600;
     font-family: "montserrat";
-    padding-left: 6rem;
     padding-bottom: 1rem;
+    padding-left: 1rem;
 }
 .linha-vertical span {
     background: rgb(0, 0, 0);
@@ -556,7 +562,7 @@ nav {
 }
 .linha-vertical {
     justify-content: center;
-    width: 11.5rem;
+    width: 14rem;
     display: flex;
     align-items: center;
 }
@@ -622,7 +628,7 @@ footer .footer-interno {
     justify-content: center;
 }
 .popup {
-    padding: 2rem;
+    padding: 0.5rem;
     display: flex;
     right: 0;
     position: fixed;
