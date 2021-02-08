@@ -9,6 +9,7 @@
     {{-- LINKS CSS --}}
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/anji.css') }}">
     {{-- <link rel="stylesheet" href="{{ asset('glide/dist/css/glide.core.css') }}">
     <link rel="stylesheet" href="{{ asset('glide/dist/css/glide.theme.css') }}"> --}}
     {{-- ICONS --}}
@@ -23,12 +24,13 @@
         <div class="header">
             <div class="logo">
                 <a href="{{ route('index') }}">
-                    <img src="{{ asset('img/logo.png') }}">
+                    <img src="{{ asset('img/logo.png') }}" id="logo1">
+                    <img src="{{ asset('img/logo22.png') }}" id="logo2">
                 </a>
                 <form class="form-inline my-2 my-lg-0">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                <button class="my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-            </form>
+                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <button class="my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                </form>
             </div>
            
             <div class="rs">
@@ -48,7 +50,7 @@
      
             @if (session()->get('name'))
                 <div class="profile">
-                     <button type="submit modal-dropdown" onclick="dropdown()">
+                    <button type="submit modal-dropdown" onclick="dropdown()">
                         <i class="fas fa-chevron-down"></i>
 
                         @if (session()->get('tipo') == 'login')
@@ -226,7 +228,7 @@
     </nav>
 
     {{-- CARROSEL DE BANNERS --}}
-    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+    {{-- <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="{{ asset('img/banner01.jpg') }}" class="d-block w-100" alt="...">
@@ -246,10 +248,10 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
-    
+    </div> --}}
+
     {{-- CATEGORIAS --}}
-    {{-- <div class="categorias">
+    <div class="categorias">
         <div class="title-destaques">
             <span>CATEGORIAS</span>
             <div class="linha-vertical"><span></span></div>
@@ -326,7 +328,7 @@
             </span>
         </div>
                   
-    </div> --}}
+    </div>
 
     {{-- DESTAQUES DA SEMANA --}}
     <div class="destaques">
@@ -336,11 +338,11 @@
         </div>
         <div class="destaques-interno">
             
-            <a href="#">
+            <a href="#" data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal, after: holdAnimClass">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
-                            <img src="{{ asset('img/item.webp') }}" alt="" srcset="">
+                            <img src="{{ asset('img/roupa01.webp') }}" alt="" srcset="">
                             <span><i class="far fa-eye eye"></i></span>
                         </div>
                     </div>
@@ -355,11 +357,11 @@
                 </div>
             </a>
 
-            <a href="#">
+            <a href="#" data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal, after: holdAnimClass">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
-                            <img src="{{ asset('img/item2.webp') }}" alt="" srcset="">
+                            <img src="{{ asset('img/roupa02.webp') }}" alt="" srcset="">
                             <span><i class="far fa-eye eye"></i></span>
                         </div>
                     </div>
@@ -374,11 +376,11 @@
                 </div>
             </a>
 
-            <a href="#">
+            <a href="#" data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal, after: holdAnimClass">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
-                            <img src="{{ asset('img/item3.webp') }}" alt="" srcset="">
+                            <img src="{{ asset('img/roupa03.webp') }}" alt="" srcset="">
                             <span><i class="far fa-eye eye"></i></span>
                         </div>
                     </div>
@@ -393,11 +395,11 @@
                 </div>
             </a>
 
-            <a href="#">
+            <a href="#" data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal, after: holdAnimClass">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
-                            <img src="{{ asset('img/item2.webp') }}" alt="" srcset="">
+                            <img src="{{ asset('img/roupa04.webp') }}" alt="" srcset="">
                             <span><i class="far fa-eye eye"></i></span>
                         </div>
                     </div>
@@ -412,31 +414,17 @@
                 </div>
             </a>
 
-            <a href="#">
-                <div class="oferta-item">
-                    <div class="oferta-header">
-                        <div class="bg">
-                            <img src="{{ asset('img/item3.webp') }}" alt="" srcset="">
-                            <span><i class="far fa-eye eye"></i></span>
-                        </div>
-                    </div>
-                    <div class="oferta-body">
-                        <div class="oferta-descricao">
-                            iPhone 12 128GB Preto iOS 5G Wi-Fi Tela 6.1" Câmera - 12MP + 12MP - Apple
-                        </div>
-                        <div class="oferta-valor">
-                            $ 10.900,00
-                        </div>
-                    </div>
-                </div>
-            </a>
         </div>
     </div>
 
      {{-- ANUNCIOS --}}
     <div class="ads">
         <img src="{{ asset('img/ads.png') }}">
+        <img src="{{ asset('img/ads2.png') }}">
     </div>
+    {{-- <div class="ads">
+        <img src="{{ asset('img/ads2.png') }}">
+    </div> --}}
 
     {{-- MAIS VENDIDOS --}}
     <div class="destaques">
@@ -446,7 +434,7 @@
         </div>
         <div class="destaques-interno">
 
-            <a href="#">
+            <a href="#" data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal, after: holdAnimClass">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
@@ -465,7 +453,7 @@
                 </div>
             </a>
 
-            <a href="#">
+            <a href="#" data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal, after: holdAnimClass">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
@@ -484,7 +472,7 @@
                 </div>
             </a>
 
-            <a href="#">
+            <a href="#" data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal, after: holdAnimClass">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
@@ -503,7 +491,7 @@
                 </div>
             </a>
             
-            <a href="#">
+            <a href="#" data-anijs="if: scroll, on: window, do: zoomIn animated, before: scrollReveal, after: holdAnimClass">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
@@ -522,7 +510,7 @@
                 </div>
             </a>
 
-            <a href="#">
+            {{-- <a href="#">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
@@ -539,9 +527,9 @@
                         </div>
                     </div>
                 </div>
-            </a>
+            </a> --}}
 
-             <a href="#">
+             {{-- <a href="#">
                 <div class="oferta-item">
                     <div class="oferta-header">
                         <div class="bg">
@@ -558,7 +546,7 @@
                         </div>
                     </div>
                 </div>
-            </a>
+            </a> --}}
 
             {{-- <a href="#">
                 <div class="oferta-item">
@@ -675,6 +663,8 @@
     <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
     <script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/popper.js') }}" ></script>
+    <script src="{{ asset('js/anijs-min.js') }}"></script>
+    <script src="{{ asset('js/anijs-helper-scrollreveal.js') }}"></script>
 <script>
                 
         $(".oferta-header").mouseover(function(){
@@ -691,9 +681,23 @@
         $(document).ready(function(){
             $(window).scroll(function(){
                 if (this.scrollY > 80) {
-                    $("nav").addClass("sticky");
+                    $("nav .header").addClass("sticky");
+                    $("nav .header span").addClass("sticky-i");
+                    $("nav .header a").addClass("sticky-i");
+                    $("nav .sub-header").addClass("sticky");
+                    $("nav .sub-header a").addClass("sticky-i");
+                    $("nav .sub-header button").addClass("sticky-i");
+                    $("#logo2").css("display", "block");
+                    $("#logo1").css("display", "none");
                 } else {
-                    $("nav").removeClass("sticky");
+                    $("nav .header").removeClass("sticky");
+                    $("nav .header span").removeClass("sticky-i");
+                    $("nav .header a").removeClass("sticky-i");
+                    $("nav .sub-header").removeClass("sticky");
+                    $("nav .sub-header a").removeClass("sticky-i");
+                    $("nav .sub-header button").removeClass("sticky-i");
+                    $("#logo2").css("display", "none");
+                    $("#logo1").css("display", "block");
                 }
             });
         });
